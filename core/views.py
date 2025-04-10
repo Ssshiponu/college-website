@@ -1,0 +1,159 @@
+from django.views.generic import ListView, DetailView, TemplateView
+from .models import Department, Faculty, Notice, Program, Event, Gallery
+from django.db.models import Q
+
+class HomeView(TemplateView):
+    template_name = 'index.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['departments'] = Department.objects.all()[:4]
+        context['faculty_members'] = Faculty.objects.filter(is_featured=True)[:4]
+        context['notices'] = Notice.objects.all()[:5]
+        context['events'] = Event.objects.filter(is_featured=True)[:3]
+        context['principal'] = Faculty.objects.filter(designation='principal').first()
+        return context
+
+class HistoryView(TemplateView):
+    template_name = 'about/history.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['principal'] = Faculty.objects.filter(designation='principal').first()
+        return context
+
+class FacultyListView(ListView):
+    model = Faculty
+    template_name = 'about/faculty.html'
+    context_object_name = 'faculty'
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search_query = self.request.GET.get('search', '')
+        department_filter = self.request.GET.get('department', '')
+        
+        if search_query:    
+            queryset = queryset.filter(
+                Q(name__icontains=search_query) | Q(department__name__icontains=search_query) | Q(designation__icontains=search_query)
+            )
+        
+        if department_filter:
+            queryset = queryset.filter(department__name__icontains=department_filter)
+        
+        return queryset
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['departments'] = Department.objects.all()
+        context['search_query'] = self.request.GET.get('search', '')
+        context['department_filter'] = self.request.GET.get('department', '')
+        return context
+
+class FacultyDetailView(DetailView):
+    model = Faculty
+    template_name = 'about/faculty_detail.html'
+    context_object_name = 'faculty'
+
+class DepartmentListView(ListView):
+    model = Department
+    template_name = 'departments.html'
+    context_object_name = 'departments'
+
+class DepartmentDetailView(DetailView):
+    model = Department
+    template_name = 'department_detail.html'
+    context_object_name = 'department'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        department = self.get_object()
+        context['faculty_members'] = Faculty.objects.filter(department=department)
+        context['programs'] = Program.objects.filter(department=department)
+        return context
+
+class NoticeListView(ListView):
+    model = Notice
+    template_name = 'notice.html'
+    context_object_name = 'notices'
+    paginate_by = 10
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        category = self.request.GET.get('category')
+        search = self.request.GET.get('search')
+        if category:
+            queryset = queryset.filter(category=category)
+        if search:
+            queryset = queryset.filter(Q(title__icontains=search) | Q(description__icontains=search))
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['featured_notice'] = Notice.objects.filter(is_important=True).order_by('-publish_date').first()
+        return context
+
+class NoticeDetailView(DetailView):
+    model = Notice
+    template_name = 'notice_detail.html'
+    context_object_name = 'notice'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        notices = Notice.objects.all()
+        for notice in notices:
+            if notice.document and notice.document.name.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
+                is_image = True
+        context['notices'] = notices
+        context['is_image'] = is_image
+        return context
+
+class ProgramListView(ListView):
+    model = Program
+    template_name = 'programs.html'
+    context_object_name = 'programs'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['hsc_programs'] = Program.objects.filter(level='hsc')
+        context['undergraduate_programs'] = Program.objects.filter(level='undergraduate')
+        context['postgraduate_programs'] = Program.objects.filter(level='postgraduate')
+        return context
+
+class ProgramDetailView(DetailView):
+    model = Program
+    template_name = 'program_detail.html'
+    context_object_name = 'program'
+
+class EventListView(ListView):
+    model = Event
+    template_name = 'events.html'
+    context_object_name = 'events'
+    paginate_by = 9
+
+class EventDetailView(DetailView):
+    model = Event
+    template_name = 'event_detail.html'
+    context_object_name = 'event'
+
+class GalleryView(ListView):
+    model = Gallery
+    template_name = 'gallery.html'
+    context_object_name = 'images'
+    paginate_by = 12
+
+class CalenderView(TemplateView):
+    template_name = 'calender.html'
+
+class ContactView(TemplateView):
+    template_name = 'contact.html'
+
+class CampusView(TemplateView):
+    template_name = 'campus.html'
+
+class AdmissionView(TemplateView):
+    template_name = 'admission.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['programs'] = Program.objects.all()[:4]
+        return context

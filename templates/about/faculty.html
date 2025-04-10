@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} শিক্ষকবৃন্দ{% endblock title %}
+{% block content %}
+<div class="bg-gradient-to-r from-primary to-primary-dark text-white py-12">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold mb-2">শিক্ষক-শিক্ষিকা</h1>
+        <div class="flex items-center">
+            <a href="../../index.html" class="hover:text-primary-light transition-colors duration-200">হোম</a>
+            <span class="mx-2">/</span>
+            <a href="#" class="hover:text-primary-light transition-colors duration-200">আমাদের সম্পর্কে</a>
+            <span class="mx-2">/</span>
+            <span>শিক্ষক-শিক্ষিকা</span>
+        </div>
+    </div>
+</div>
+<section class="mb-8 bg-white">
+    <div class="container mx-auto px-4">
+        <!-- Search and Filter Section -->
+        <div class="mb-8">
+            <div class="bg-white border-b p-6">
+                <h3 class="text-xl font-semibold mb-4">শিক্ষক-শিক্ষিকা খুঁজুন</h3>
+                <form method="get" class="md:flex gap-4">
+                    <div class="mb-6 mt-5">
+                        <div class="relative">
+                            <input type="text" id="facultySearch" {% if search_query %}value="{{ search_query }}" {% endif %} name="search" placeholder="নাম বা বিভাগ অনুসন্ধান করুন..." class="w-full py-3 pl-4 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <button type="button" onclick="this.form.submit()" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div>
+                            <label for="departmentFilter" class="block text-sm font-thin text-gray-700">বিভাগ</label>
+                            <select id="departmentFilter" name="department" class="w-full pl-4 pr-6 py-3 border border-gray-300 rounded-md bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" onchange="this.form.submit()">
+                                {% if departments %}
+                                <option value="">সব বিভাগ</option>
+                                {% for department in departments %}
+                                    <option value="{{ department.name }}" {% if department.name == department_filter %}selected{% endif %}>{{ department.name }}</option>
+                                {% endfor %}
+                                {% else %}
+                                <option value="" disabled>কোন বিভাগ নেই</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                    </div>
+                </form>
+                
+                {% if search_query %}
+                <div class="text-sm text-gray-600">
+                    <span id="filterCount ">{{ faculty|length }}</span> results for <span class="font-semibold itaclic">"{{ search_query }}"</span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        {% if faculty %}
+        <div class="m-4 lg:m-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {% for item in faculty %}
+            
+                <div class="w-full">
+                    <a href="{% url 'core:faculty_detail' item.slug %}" class="h-full flex items-center cursor-pointer overflow-hidden border border-gray-200 rounded-lg hover:border-primary transition duration-300 ease-in-out">
+                      <img alt="team" class="h-24 w-24 bg-gray-100 object-cover object-center flex-shrink-0 mr-2" src="{{item.photo.url}}">
+                      <div class="flex-grow p-3"> 
+                        <h2 class="text-gray-900 title-font font-medium ">{{item.name}}</h2>
+                        <p class="text-gray-500">{{item.designation}}</p>
+                        <small class="text-gray-500">বিভাগ: {{item.department}}</small>
+                      </div>
+                    </a>
+                </div>
+           
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center">
+            <h2 class="text-2xl font-semibold text-gray-800">কোন শিক্ষক/শিক্ষিকা পাওয়া যায়নি</h2>
+            <p class="mt-4 text-gray-600">দয়া করে আপনার অনুসন্ধানটি পরিবর্তন করুন বা আমাদের সাথে যোগাযোগ করুন।</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,233 @@
+{% extends "base.html" %}
+{% block title %}Contact{% endblock title %}
+{% block content %}
+<!-- Contact Information Section -->
+<section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">যোগাযোগের তথ্য</h2>
+            <p class="text-gray-600">আমাদের সাথে যোগাযোগের বিভিন্ন উপায়</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-8">
+            <div class="text-center">
+                <h3 class="text-xl font-semibold mb-2">ঠিকানা</h3>
+                <p class="text-gray-600">ধামরাই সরকারি কলেজ, ধামরাই, ঢাকা-১৩৫০, বাংলাদেশ</p>
+            </div>
+            
+            <div class="text-center">
+                
+                <h3 class="text-xl font-semibold mb-2">ফোন</h3>
+                <p class="text-gray-600">+৮৮০১২৩৪৫৬৭</p>
+                <p class="text-gray-600">+৮৮০৭৬৫৪৩২১</p>
+            </div>
+            
+            <div class="text-center">
+                <h3 class="text-xl font-semibold mb-2">ইমেইল</h3>
+                <p class="text-gray-600">info@dhamr...ege.edu.bd</p>
+                <p class="text-gray-600">principal@dham...ege.edu.bd</p>
+            </div>
+            
+            <div class="text-center">
+                
+                <h3 class="text-xl font-semibold mb-2">অফিস সময়</h3>
+                <p class="text-gray-600">রবিবার - বৃহস্পতিবার: সকাল ৯টা - বিকাল ৫টা</p>
+                <p class="text-gray-600">শুক্রবার - শনিবার: বন্ধ</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map & Contact Form Section -->
+<section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">আমাদের অবস্থান</h2>
+                <div class="rounded overflow-hidden h-[400px]">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3646.656157793367!2d90.2144!3d23.9163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755ebd3747c9087%3A0x20c70986185d2332!2sDhamrai%20Govt.%20College!5e0!3m2!1sen!2sbd!4v1624789542873!5m2!1sen!2sbd" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            
+            <div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">আমাদের লিখুন</h2>
+                <form id="contactForm" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-1">নাম *</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-primary" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-1">ইমেইল *</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-primary" required>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="phone" class="block text-gray-700 mb-1">ফোন নম্বর</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-gray-700 mb-1">বিষয় *</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-primary" required>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="department" class="block text-gray-700 mb-1">বিভাগ</label>
+                        <select id="department" name="department" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-primary">
+                            <option value="">বিভাগ নির্বাচন করুন</option>
+                            <option value="admission">ভর্তি অফিস</option>
+                            <option value="academic">একাডেমিক বিভাগ</option>
+                            <option value="accounts">হিসাব বিভাগ</option>
+                            <option value="administration">প্রশাসন</option>
+                            <option value="library">লাইব্রেরি</option>
+                            <option value="it">আইটি সেল</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-gray-700 mb-1">বার্তা *</label>
+                        <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-primary" required></textarea>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <input type="checkbox" id="terms" name="terms" class="mt-1 mr-2" required>
+                        <label for="terms" class="text-gray-700">আমি <a href="#" class="text-primary">গোপনীয়তা নীতি</a> এবং <a href="#" class="text-primary">ব্যবহারের শর্তাবলী</a> মেনে নিচ্ছি *</label>
+                    </div>
+                    
+                    <div>
+                        <button type="submit" class="bg-primary text-white px-6 py-2 rounded font-medium">বার্তা পাঠান</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Department Contact Information -->
+<section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">বিভাগীয় যোগাযোগ</h2>
+            <p class="text-gray-600">আমাদের বিভিন্ন বিভাগের সাথে সরাসরি যোগাযোগ করুন</p>
+        </div>
+        
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white">
+                <thead class="bg-gray-100">
+                    <tr>
+                        <th class="py-3 px-4 text-left font-semibold">বিভাগ</th>
+                        <th class="py-3 px-4 text-left font-semibold">যোগাযোগকারী ব্যক্তি</th>
+                        <th class="py-3 px-4 text-left font-semibold">ফোন</th>
+                        <th class="py-3 px-4 text-left font-semibold">ইমেইল</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr>
+                        <td class="py-3 px-4">অধ্যক্ষের অফিস</td>
+                        <td class="py-3 px-4">সেলিম মিয়া</td>
+                        <td class="py-3 px-4">+৮৮০-১৭১২-৩৪৫৬৭৮</td>
+                        <td class="py-3 px-4">principal@dhamraigovtcollege.edu.bd</td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-4">ভর্তি অফিস</td>
+                        <td class="py-3 px-4">কামাল আহমেদ</td>
+                        <td class="py-3 px-4">+৮৮০-১৮১২-৩৪৫৬৭৮</td>
+                        <td class="py-3 px-4">admission@dhamraigovtcollege.edu.bd</td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-4">হিসাব বিভাগ</td>
+                        <td class="py-3 px-4">নাজমুল হক</td>
+                        <td class="py-3 px-4">+৮৮০-১৯১২-৩৪৫৬৭৮</td>
+                        <td class="py-3 px-4">accounts@dhamraigovtcollege.edu.bd</td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-4">লাইব্রেরি</td>
+                        <td class="py-3 px-4">সালমা বেগম</td>
+                        <td class="py-3 px-4">+৮৮০-১৬১২-৩৪৫৬৭৮</td>
+                        <td class="py-3 px-4">library@dhamraigovtcollege.edu.bd</td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-4">পরীক্ষা নিয়ন্ত্রক</td>
+                        <td class="py-3 px-4">রহিম উদ্দিন</td>
+                        <td class="py-3 px-4">+৮৮০-১৫১২-৩৪৫৬৭৮</td>
+                        <td class="py-3 px-4">examination@dhamraigovtcollege.edu.bd</td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-4">আইটি সেল</td>
+                        <td class="py-3 px-4">মাহমুদুল হাসান</td>
+                        <td class="py-3 px-4">+৮৮০-১৪১২-৩৪৫৬৭৮</td>
+                        <td class="py-3 px-4">it@dhamraigovtcollege.edu.bd</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">প্রায়শই জিজ্ঞাসিত প্রশ্ন</h2>
+            <p class="text-gray-600">আমাদের সাধারণ প্রশ্নগুলোর উত্তর</p>
+        </div>
+        
+        <div class="max-w-3xl mx-auto space-y-4">
+            <div class="border border-gray-200 rounded overflow-hidden">
+                <button class="faq-question w-full px-6 py-4 text-left bg-white flex justify-between items-center">
+                    <span class="font-medium text-gray-800">অফিসের কাজের সময় কি?</span>
+                    <i class="fas fa-chevron-down text-gray-500 transition-transform"></i>
+                </button>
+                <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                    <p class="p-6 text-gray-600">আমাদের অফিস রবিবার থেকে বৃহস্পতিবার সকাল ৯টা থেকে বিকাল ৫টা পর্যন্ত খোলা থাকে। শুক্রবার এবং শনিবার সাপ্তাহিক ছুটি। সরকারি ছুটির দিনে অফিস বন্ধ থাকে।</p>
+                </div>
+            </div>
+            
+            <div class="border border-gray-200 rounded overflow-hidden">
+                <button class="faq-question w-full px-6 py-4 text-left bg-white flex justify-between items-center">
+                    <span class="font-medium text-gray-800">ট্রান্সক্রিপ্ট এবং সার্টিফিকেট কিভাবে সংগ্রহ করব?</span>
+                    <i class="fas fa-chevron-down text-gray-500 transition-transform"></i>
+                </button>
+                <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                    <p class="p-6 text-gray-600">ট্রান্সক্রিপ্ট এবং সার্টিফিকেট সংগ্রহের জন্য আপনাকে একাডেমিক শাখায় আবেদন ফরম পূরণ করতে হবে এবং প্রয়োজনীয় ফি জমা দিতে হবে। আবেদনের ৭-১০ কার্যদিবসের মধ্যে আপনার ডকুমেন্ট প্রস্তুত হবে।</p>
+                </div>
+            </div>
+            
+            <div class="border border-gray-200 rounded overflow-hidden">
+                <button class="faq-question w-full px-6 py-4 text-left bg-white flex justify-between items-center">
+                    <span class="font-medium text-gray-800">ক্যাম্পাস ভ্রমণের ব্যবস্থা আছে কি?</span>
+                    <i class="fas fa-chevron-down text-gray-500 transition-transform"></i>
+                </button>
+                <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                    <p class="p-6 text-gray-600">হ্যাঁ, আমরা সাপ্তাহিক ক্যাম্পাস ভ্রমণের ব্যবস্থা করে থাকি। প্রতি বৃহস্পতিবার সকাল ১১টায় ভ্রমণ শুরু হয়। অংশগ্রহণ করতে আপনাকে অবশ্যই ২ দিন আগে রেজিস্ট্রেশন করতে হবে। এজন্য অ্যাডমিশন অফিসে যোগাযোগ করুন।</p>
+                </div>
+            </div>
+            
+            <div class="border border-gray-200 rounded overflow-hidden">
+                <button class="faq-question w-full px-6 py-4 text-left bg-white flex justify-between items-center">
+                    <span class="font-medium text-gray-800">বৃত্তি সম্পর্কিত কিভাবে তথ্য পাব?</span>
+                    <i class="fas fa-chevron-down text-gray-500 transition-transform"></i>
+                </button>
+                <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                    <p class="p-6 text-gray-600">বৃত্তি সম্পর্কিত সকল তথ্য কলেজের ওয়েবসাইটের 'বৃত্তি' পেজে পাওয়া যাবে। এছাড়াও, বৃত্তি বিভাগে যোগাযোগ করে বিস্তারিত জানতে পারেন। আমাদের কলেজে মেধাভিত্তিক, উপবৃত্তি, এবং প্রয়োজনভিত্তিক বিভিন্ন বৃত্তি রয়েছে।</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    // Faq Accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            answer.classList.toggle('max-h-0');
+            answer.classList.toggle('max-h-screen');
+            question.querySelector('i').classList.toggle('rotate-180');
+        });
+    });
+</script>
+{% endblock content %}

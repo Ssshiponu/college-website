@@ -1,0 +1,643 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}ভর্তি{% endblock title %}
+{% block content %}
+
+<!-- Page Title -->
+<div class="bg-gradient-to-r from-primary to-primary-dark text-white py-12">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold mb-2">ভর্তি তথ্য</h1>
+        <div class="flex items-center text">
+            <a href="../index.html" class="hover:text-primary-light transition-colors duration-200">হোম</a>
+            <span class="mx-2">/</span>
+            <span>ভর্তি</span>
+        </div>
+    </div>
+</div>
+
+<section class="py-10 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sidebar -->
+            <div class="lg:w-1/4">
+                <div class="bg-gray-50 border border-gray-200 rounded p-6 sticky top-24">
+                    <h3 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-200">এই পেজে যা যা আছে </h3>
+                    
+                    <div class="mb-6">
+                        <ul class="space-y-2">
+                            <li>
+                                <a href="#admission-programs" class="flex items-center text-primary font-medium">
+                                    ভর্তি প্রোগ্রামসমূহ
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#eligibility" class="flex items-center text-gray-700 hover:text-primary">
+                                    যোগ্যতা
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#application-process" class="flex items-center text-gray-700 hover:text-primary">
+                                    আবেদন প্রক্রিয়া
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#required-documents" class="flex items-center text-gray-700 hover:text-primary">
+                                    প্রয়োজনীয় কাগজপত্র
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#admission-fees" class="flex items-center text-gray-700 hover:text-primary">
+                                    ভর্তি ফি
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#important-dates" class="flex items-center text-gray-700 hover:text-primary">
+                                    গুরুত্বপূর্ণ তারিখ
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#faq" class="flex items-center text-gray-700 hover:text-primary">
+                                    সাধারণ প্রশ্নোত্তর
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-primary/5 p-4 rounded sm:hidden md:block">
+                        <h4 class="font-semibold mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info text-primary inline mr-2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> প্রয়োজনীয় যোগাযোগ</h4>
+                        <ul class="flex flex-col space-y-2 text-sm">
+                            <li class="flex">
+                                <span>ভর্তি হেল্পলাইন: +৮৮০-২-১২৩৪৫৬৭</span>
+                            </li>
+                            <li class="flex">
+                                <span>ইমেইল: dgc@gmail.com</span>
+                            </li>
+                            <li class="flex">
+                                <span>ভর্তি অফিস: প্রশাসনিক ভবন, ১ম তলা</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main content -->
+            <div class="lg:w-3/4">
+                <!-- Admission Notice -->
+                <div class="bg-primary/5 border border-primary/20 rounded-lg p-6 mb-10">
+                    <h2 class="text-2xl font-semibold mb-4">২০২৫-২০২৬ শিক্ষাবর্ষের ভর্তি প্রক্রিয়া চলছে!</h2>
+                    <p class="mb-4">আমরা ধামরাই সরকারি কলেজে ২০২৫-২০২৬ শিক্ষাবর্ষের জন্য উচ্চ মাধ্যমিক এবং স্নাতক প্রোগ্রামের জন্য শিক্ষার্থী ভর্তি প্রক্রিয়া শুরু করেছি। যোগ্য ও আগ্রহী শিক্ষার্থীদের আবেদন করার জন্য আমন্ত্রণ জানাচ্ছি।</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#online-application" class="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe mr-2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg> অনলাইনে আবেদন করুন
+                        </a>
+                        <a href="#" class="bg-white text-primary border border-primary px-4 py-2 rounded hover:bg-gray-50 transition-colors flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download mr-2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg> আবেদন ফরম ডাউনলোড
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Admission Programs Section -->
+                <div id="admission-programs" class="mb-12">
+                    <h2 class="text-2xl font-semibold mb-6 pb-2 border-b border-gray-200">ভর্তি প্রোগ্রামসমূহ</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <!-- HSC Program -->
+                        <div class="bg-white border border-gray-200 rounded-lg p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">উচ্চ মাধ্যমিক</span>
+                                <span class="text-gray-500">২ বছর মেয়াদি</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">উচ্চ মাধ্যমিক প্রোগ্রাম</h3>
+                            <ul class="mb-4 space-y-2">
+                                <li class="flex items-center">  বিজ্ঞান শাখা</li>
+                                <li class="flex items-center">  মানবিক শাখা</li>
+                                <li class="flex items-center">  ব্যবসায় শিক্ষা শাখা</li>
+                            </ul>
+                            <a href="academics/programs.html#hsc" class="text-primary font-medium hover:text-primary-dark">বিস্তারিত দেখুন <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-1 inline"><line x1="5" x2="19" y1="12" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                        </div>
+                        
+                        <!-- Degree Program -->
+                        <div class="bg-white border border-gray-200 rounded-lg p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium">ডিগ্রি পাস কোর্স</span>
+                                <span class="text-gray-500">৩ বছর মেয়াদি</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">স্নাতক (পাস) প্রোগ্রাম</h3>
+                            <ul class="mb-4 space-y-2">
+                                <li class="flex items-center">  বি.এ (পাস) কোর্স</li>
+                                <li class="flex items-center">  বি.এসসি (পাস) কোর্স</li>
+                                <li class="flex items-center">  বি.বি.এস (পাস) কোর্স</li>
+                            </ul>
+                            <a href="academics/programs.html#degree" class="text-primary font-medium hover:text-primary-dark">বিস্তারিত দেখুন <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-1 inline"><line x1="5" x2="19" y1="12" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                        </div>
+                        
+                        <!-- Honors Program -->
+                        <div class="bg-white border border-gray-200 rounded-lg p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium">অনার্স</span>
+                                <span class="text-gray-500">৪ বছর মেয়াদি</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">স্নাতক (সম্মান) প্রোগ্রাম</h3>
+                            <ul class="mb-4 space-y-2">
+                                <li class="flex items-center">  বাংলা, ইংরেজি, ইতিহাস</li>
+                                <li class="flex items-center">  অর্থনীতি, রাষ্ট্রবিজ্ঞান</li>
+                                <li class="flex items-center">  গণিত, পদার্থবিজ্ঞান, রসায়ন</li>
+                            </ul>
+                            <a href="academics/programs.html#honors" class="text-primary font-medium hover:text-primary-dark">বিস্তারিত দেখুন <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-1 inline"><line x1="5" x2="19" y1="12" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                        </div>
+                        
+                        <!-- Masters Program -->
+                        <div class="bg-white border border-gray-200 rounded-lg p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium">মাস্টার্স</span>
+                                <span class="text-gray-500">১ বছর মেয়াদি</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">স্নাতকোত্তর প্রোগ্রাম</h3>
+                            <ul class="mb-4 space-y-2">
+                                <li class="flex items-center">  বাংলা, ইংরেজি</li>
+                                <li class="flex items-center">  অর্থনীতি, ব্যবস্থাপনা</li>
+                                <li class="flex items-center">  রাষ্ট্রবিজ্ঞান</li>
+                            </ul>
+                            <a href="academics/programs.html" class="text-primary font-medium hover:text-primary-dark">বিস্তারিত দেখুন <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-1 inline"><line x1="5" x2="19" y1="12" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Eligibility Criteria Section -->
+                <div id="eligibility" class="mb-12">
+                    <h2 class="text-2xl font-semibold mb-6 pb-2 border-b border-gray-200">যোগ্যতা</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-lg p-6 border border-gray-200">
+                            <h3 class="text-xl font-semibold mb-4 flex items-center">
+                                <span class="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center mr-3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>
+                                উচ্চ মাধ্যমিক (HSC) প্রোগ্রাম
+                            </h3>
+                            <p class="mb-4">উচ্চ মাধ্যমিক প্রোগ্রামে ভর্তির জন্য নিম্নলিখিত যোগ্যতা থাকতে হবে:</p>
+                            <ul class="space-y-2 list-disc ml-6">
+                                <li class="flex items-start">
+                                    
+                                    <span>বিজ্ঞান শাখায় ভর্তির জন্য কমপক্ষে GPA ৪.০০ থাকতে হবে।</span>
+                                </li>
+                                <li class="flex items-start">
+                                    
+                                    <span>ব্যবসায় শিক্ষা শাখায় ভর্তির জন্য কমপক্ষে GPA ৩.৫০ থাকতে হবে।</span>
+                                </li>
+                                <li class="flex items-start">
+                                    
+                                    <span>মানবিক শাখায় ভর্তির জন্য কমপক্ষে GPA ৩.৫০ থাকতে হবে।</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-6 border border-gray-200">
+                            <h3 class="text-xl font-semibold mb-4 flex items-center">
+                                <span class="bg-green-100 text-green-600 w-8 h-8 rounded-full flex items-center justify-center mr-3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-check"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg></span>
+                                স্নাতক (পাস) প্রোগ্রাম
+                            </h3>
+                            <p class="mb-4">ডিগ্রি পাস কোর্সে ভর্তির জন্য নিম্নলিখিত যোগ্যতা থাকতে হবে:</p>
+                            <ul class="space-y-2 list-disc ml-6">
+                                <li class="flex items-start">
+                                    
+                                    <span>উচ্চ মাধ্যমিক বা সমমানের পরীক্ষায় ন্যূনতম GPA ৩.৫০ পেয়ে উত্তীর্ণ হতে হবে।</span>
+                                </li>
+                                <li class="flex items-start">
+                                    
+                                    <span>বি.এসসি (পাস) কোর্সে ভর্তির জন্য বিজ্ঞান শাখা থেকে উত্তীর্ণ হতে হবে।</span>
+                                </li>
+                                <li class="flex items-start">
+                                    
+                                    <span>বি.বি.এস (পাস) কোর্সে ভর্তির জন্য যেকোনো শাখা থেকে উত্তীর্ণ শিক্ষার্থীরা আবেদন করতে পারবে।</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-6 border border-gray-200">
+                            <h3 class="text-xl font-semibold mb-4 flex items-center">
+                                <span class="bg-purple-100 text-purple-600 w-8 h-8 rounded-full flex items-center justify-center mr-3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span>
+                                স্নাতক (সম্মান) প্রোগ্রাম
+                            </h3>
+                            <p class="mb-4">অনার্স প্রোগ্রামে ভর্তির জন্য নিম্নলিখিত যোগ্যতা থাকতে হবে:</p>
+                            <ul class="space-y-2 list-disc ml-6">
+                                <li class="flex items-start">
+                                    
+                                    <span>উচ্চ মাধ্যমিক বা সমমানের পরীক্ষায় ন্যূনতম GPA ৩.৫০ পেয়ে উত্তীর্ণ হতে হবে।</span>
+                                </li>
+                                <li class="flex items-start">
+                                    
+                                    <span>বিজ্ঞান বিষয়ে অনার্স করতে চাইলে HSC-তে বিজ্ঞান শাখা থেকে উত্তীর্ণ হতে হবে এবং সংশ্লিষ্ট বিষয়ে ন্যূনতম GPA ৩.৫০ থাকতে হবে।</span>
+                                </li>
+                                <li class="flex items-start">
+                                    
+                                    <span>অর্থনীতি, ব্যবস্থাপনা বিষয়ে অনার্স করতে চাইলে HSC-তে ব্যবসায় শিক্ষা বা বিজ্ঞান শাখা থেকে উত্তীর্ণ হতে হবে।</span>
+                                </li>
+                                <li class="flex items-start">
+                                    
+                                    <span>বাংলা, ইংরেজি, ইতিহাস, রাষ্ট্রবিজ্ঞান বিষয়ে অনার্স করতে চাইলে যেকোনো শাখা থেকে উত্তীর্ণ হতে হবে।</span>
+                                </li>
+                            </ul>
+                            <div class="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                                <p class="text-sm">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info text-yellow-500 mr-2 inline"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                                    <span>বিশেষ দ্রষ্টব্য: সকল প্রোগ্রামে ভর্তির জন্য সীমিত আসন রয়েছে এবং ভর্তি পরীক্ষার মাধ্যমে শিক্ষার্থী নির্বাচন করা হবে। ভর্তি পরীক্ষার সময়সূচি জানতে আমাদের ওয়েবসাইট নিয়মিত দেখুন।</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Application Process Section -->
+                <div id="application-process" class="mb-12">
+                    <h2 class="text-2xl font-semibold mb-6 pb-2 border-b border-gray-200">আবেদন প্রক্রিয়া</h2>
+                    
+                    <div class="bg-white rounded-lg p-6 border border-gray-200 mb-6">
+                        <h3 class="text-xl font-semibold mb-4">আবেদন পদ্ধতি</h3>
+                        <p class="mb-4">আমাদের কলেজে ভর্তির জন্য আবেদন করতে আপনি নিম্নলিখিত পদ্ধতি অবলম্বন করতে পারেন:</p>
+                        
+                        <div class="space-y-6">
+                            <!-- Online Application -->
+                            <div id="online-application" class="flex flex-col md:flex-row gap-4 border-b border-dashed border-gray-300 pb-6">
+                                <div class="md:w-1/4 flex justify-center">
+                                    <div class="bg-blue-50 h-24 w-24 rounded-full flex items-center justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe text-blue-500"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                                    </div>
+                                </div>
+                                <div class="md:w-3/4">
+                                    <h4 class="text-lg font-semibold mb-2">অনলাইন আবেদন</h4>
+                                    <ol class="list-decimal ml-5 space-y-2">
+                                        <li>আমাদের ওয়েবসাইটের <a href="#" class="text-primary hover:underline">অনলাইন আবেদন পোর্টালে</a> যান।</li>
+                                        <li>নতুন একাউন্ট তৈরি করুন বা আপনার বিদ্যমান একাউন্টে লগইন করুন।</li>
+                                        <li>আবেদন ফরম পূরণ করুন এবং সকল প্রয়োজনীয় তথ্য প্রদান করুন।</li>
+                                        <li>আপনার সর্বশেষ পাসপোর্ট সাইজের ছবি আপলোড করুন।</li>
+                                        <li>অনলাইন পেমেন্ট গেটওয়ের মাধ্যমে আবেদন ফি প্রদান করুন।</li>
+                                        <li>সম্পূর্ণ করা ফরম জমা দিন এবং আপনার আবেদনের একটি প্রিন্টআউট নিন।</li>
+                                    </ol>
+                                    <div class="mt-4">
+                                        <a href="#" class="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors inline-block">
+                                            অনলাইনে আবেদন করুন
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Offline Application -->
+                            <div class="flex flex-col md:flex-row gap-4">
+                                <div class="md:w-1/4 flex justify-center">
+                                    <div class="bg-green-50 h-24 w-24 rounded-full flex items-center justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text text-green-500"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                                    </div>
+                                </div>
+                                <div class="md:w-3/4">
+                                    <h4 class="text-lg font-semibold mb-2">সরাসরি আবেদন</h4>
+                                    <ol class="list-decimal ml-5 space-y-2">
+                                        <li>কলেজের ভর্তি অফিস থেকে আবেদন ফরম সংগ্রহ করুন।</li>
+                                        <li>আবেদন ফরম সঠিকভাবে পূরণ করুন।</li>
+                                        <li>প্রয়োজনীয় কাগজপত্র সংযুক্ত করুন।</li>
+                                        <li>আবেদন ফি জমা দিন (নগদ/ব্যাংক ড্রাফট)।</li>
+                                        <li>পূরণকৃত আবেদন ফরম কলেজের ভর্তি অফিসে জমা দিন।</li>
+                                    </ol>
+                                    <div class="mt-4">
+                                        <a href="#" class="bg-white text-primary border border-primary px-4 py-2 rounded hover:bg-gray-50 transition-colors inline-flex">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download mr-2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg> আবেদন ফরম ডাউনলোড
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Required Documents Section -->
+                <section class="bg-gray-50 py-12 lg:py-16">
+                    <div class="container mx-auto px-4">
+                        <div class="text-center mb-10">
+                            <h2 class="text-3xl font-bold text-gray-800 mb-2">প্রয়োজনীয় কাগজপত্র</h2>
+                            <p class="text-xl text-gray-600">Required Documents</p>
+                            <div class="h-1 w-24 bg-primary mx-auto mt-4"></div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                    উচ্চ মাধ্যমিক (HSC) ক্লাসে ভর্তির জন্য
+                                </h3>
+                                <ul class="space-y-3 text-gray-700 list-disc ml-6">
+                                    <li class="flex items-start">
+                                        <span>এসএসসি বা সমমানের পরীক্ষার মূল মার্কশিট ও সার্টিফিকেট</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span>এসএসসি বা সমমানের রেজিস্ট্রেশন কার্ড</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span>সদ্য তোলা পাসপোর্ট সাইজের ৪ কপি রঙিন ছবি</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span>অভিভাবকের জাতীয় পরিচয়পত্রের কপি</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                    
+                                    স্নাতক (পাস/অনার্স) ক্লাসে ভর্তির জন্য
+                                </h3>
+                                <ul class="space-y-3 text-gray-700 list-disc ml-6">
+                                    <li class="flex items-start">
+                                        <span>এইচএসসি বা সমমানের পরীক্ষার মূল মার্কশিট ও সার্টিফিকেট</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span>এসএসসি বা সমমানের মার্কশিট</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span>এইচএসসি রেজিস্ট্রেশন কার্ড</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span>সদ্য তোলা পাসপোর্ট সাইজের ৪ কপি রঙিন ছবি</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span>জাতীয় পরিচয়পত্র বা জন্ম নিবন্ধন সনদের কপি</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Admission Fees Section -->
+<div id="admission-fees" class="mb-12">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-semibold mb-6 pb-2 border-b border-gray-200">ভর্তি ফি</h2>
+        
+        <div class="relative overflow-x-auto">
+            <table class="w-full bg-white  border border-gray-200">
+                <thead>
+                    <tr class="bg-primary text-white">
+                        <th class="py-3 px-4 text-left">প্রোগ্রাম</th>
+                        <th class="py-3 px-4 text-left">আবেদন ফি</th>
+                        <th class="py-3 px-4 text-left">ভর্তি ফি</th>
+                        <th class="py-3 px-4 text-left">সেমিস্টার/বার্ষিক ফি</th>
+                        <th class="py-3 px-4 text-left">অন্যান্য ফি</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4 font-medium">উচ্চ মাধ্যমিক (বিজ্ঞান)</td>
+                        <td class="py-3 px-4">৫০০ টাকা</td>
+                        <td class="py-3 px-4">৫,০০০ টাকা</td>
+                        <td class="py-3 px-4">৬,০০০ টাকা (বার্ষিক)</td>
+                        <td class="py-3 px-4">১,৫০০ টাকা (ল্যাব ফি)</td>
+                    </tr>
+                    <tr class="border-b border-gray-200 bg-gray-50">
+                        <td class="py-3 px-4 font-medium">উচ্চ মাধ্যমিক (মানবিক)</td>
+                        <td class="py-3 px-4">৫০০ টাকা</td>
+                        <td class="py-3 px-4">৪,৫০০ টাকা</td>
+                        <td class="py-3 px-4">৫,০০০ টাকা (বার্ষিক)</td>
+                        <td class="py-3 px-4">১,০০০ টাকা</td>
+                    </tr>
+                    <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4 font-medium">উচ্চ মাধ্যমিক (ব্যবসায় শিক্ষা)</td>
+                        <td class="py-3 px-4">৫০০ টাকা</td>
+                        <td class="py-3 px-4">৪,৫০০ টাকা</td>
+                        <td class="py-3 px-4">৫,০০০ টাকা (বার্ষিক)</td>
+                        <td class="py-3 px-4">১,০০০ টাকা</td>
+                    </tr>
+                    <tr class="border-b border-gray-200 bg-gray-50">
+                        <td class="py-3 px-4 font-medium">স্নাতক (পাস) কোর্স</td>
+                        <td class="py-3 px-4">৮০০ টাকা</td>
+                        <td class="py-3 px-4">৮,০০০ টাকা</td>
+                        <td class="py-3 px-4">৬,৫০০ টাকা (সেমিস্টার)</td>
+                        <td class="py-3 px-4">১,৫০০ টাকা</td>
+                    </tr>
+                    <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4 font-medium">স্নাতক (সম্মান) - বিজ্ঞান</td>
+                        <td class="py-3 px-4">১,০০০ টাকা</td>
+                        <td class="py-3 px-4">১০,০০০ টাকা</td>
+                        <td class="py-3 px-4">৮,০০০ টাকা (সেমিস্টার)</td>
+                        <td class="py-3 px-4">২,৫০০ টাকা (ল্যাব ফি)</td>
+                    </tr>
+                    <tr class="border-b border-gray-200 bg-gray-50">
+                        <td class="py-3 px-4 font-medium">স্নাতক (সম্মান) - কলা ও সামাজিক বিজ্ঞান</td>
+                        <td class="py-3 px-4">১,০০০ টাকা</td>
+                        <td class="py-3 px-4">৯,০০০ টাকা</td>
+                        <td class="py-3 px-4">৭,৫০০ টাকা (সেমিস্টার)</td>
+                        <td class="py-3 px-4">১,৫০০ টাকা</td>
+                    </tr>
+                    <tr class="border-b border-gray-200">
+                        <td class="py-3 px-4 font-medium">স্নাতকোত্তর</td>
+                        <td class="py-3 px-4">১,২০০ টাকা</td>
+                        <td class="py-3 px-4">১২,০০০ টাকা</td>
+                        <td class="py-3 px-4">১০,০০০ টাকা (সেমিস্টার)</td>
+                        <td class="py-3 px-4">২,০০০ টাকা</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+        
+        <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <h4 class="font-semibold mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info text-yellow-500 mr-2 inline"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> গুরুত্বপূর্ণ তথ্য:</h4>
+            <ul class="space-y-2 ml-6 list-disc text-sm">
+                <li>সকল ফি পরিশোধ করতে হবে কলেজের হিসাব শাখায় অথবা অনলাইন পেমেন্ট সিস্টেমের মাধ্যমে।</li>
+                <li>ভর্তি ফি একবার প্রদান সাপেক্ষে, ফেরতযোগ্য নয়।</li>
+                <li>বিশেষ কোটার (মুক্তিযোদ্ধা সন্তান, প্রতিবন্ধী) আবেদনকারীদের জন্য ফি'তে বিশেষ ছাড়ের ব্যবস্থা রয়েছে।</li>
+                <li>দরিদ্র ও মেধাবী শিক্ষার্থীদের জন্য বিশেষ বৃত্তির ব্যবস্থা রয়েছে।</li>
+                <li>সেমিস্টার/বার্ষিক ফি একাডেমিক ক্যালেন্ডার অনুসারে নির্ধারিত সময়ে পরিশোধ করতে হবে।</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+<!-- Important Dates Section -->
+<div id="important-dates" class="mb-12 bg-gray-50 py-10">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-semibold mb-6 pb-2 border-b border-gray-200">গুরুত্বপূর্ণ তারিখ</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- HSC Admission Timeline -->
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold mb-4 text-primary">উচ্চ মাধ্যমিক ভর্তি সময়সূচি</h3>
+                <ul class="space-y-4">
+                    <li class="flex">
+                        <div class="mr-4">
+                            <div class="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">আবেদন শুরু</h4>
+                            <p class="text-gray-600">১ জুন, ২০২৫</p>
+                        </div>
+                    </li>
+                    <li class="flex">
+                        <div class="mr-4">
+                            <div class="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-x"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><line x1="10" x2="14" y1="14" y2="18"/><line x1="14" x2="10" y1="14" y2="18"/></svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">আবেদনের শেষ তারিখ</h4>
+                            <p class="text-gray-600">৩০ জুন, ২০২৫</p>
+                        </div>
+                    </li>
+                    <li class="flex">
+                        <div class="mr-4">
+                            <div class="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">ভর্তি পরীক্ষা</h4>
+                            <p class="text-gray-600">১০ জুলাই, ২০২৫</p>
+                        </div>
+                    </li>
+                    <li class="flex">
+                        <div class="mr-4">
+                            <div class="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">ফলাফল প্রকাশ</h4>
+                            <p class="text-gray-600">২০ জুলাই, ২০২৫</p>
+                        </div>
+                    </li>
+                    <li class="flex">
+                        <div class="mr-4">
+                            <div class="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">ভর্তির সময়সীমা</h4>
+                            <p class="text-gray-600">২১-৩১ জুলাই, ২০২৫</p>
+                        </div>
+                    </li>
+                    <li class="flex">
+                        <div class="mr-4">
+                            <div class="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-school"><path d="m4 6 8-4 8 4"/><path d="m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2"/><path d="M14 22v-4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v4"/><path d="M12 12v6"/></svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">ক্লাস শুরু</h4>
+                            <p class="text-gray-600">১ আগস্ট, ২০২৫</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Undergraduate Admission Timeline -->
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold mb-4 text-primary">স্নাতক ভর্তি সময়সূচি</h3>
+                <ul class="space-y-4">
+                    <li class="flex">
+                        <div class="mr-4">
+                            <div class="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">আবেদন শুরু</h4>
+                            <p class="text-gray-600">১ সেপ্টেম্বর, ২০২৫</p>
+                        </div>
+                    </li>
+                    <li class="flex">
+                        <div class="mr-4">
+                            <div class="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-x"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><line x1="10" x2="14" y1="14" y2="18"/><line x1="14" x2="10" y1="14" y2="18"/></svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">আবেদনের শেষ তারিখ</h4>
+                            <p class="text-gray-600">৩০ সেপ্টেম্বর, ২০২৫</p>
+                        </div>
+                    </li>
+                    <li class="flex">
+                        <div class="mr-4">
+                            <div class="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">ভর্তি পরীক্ষা (সম্মান)</h4>
+                            <p class="text-gray-600">১০ অক্টোবর, ২০২৫</p>
+                        </div>
+                    </li>
+                    <li class="flex">
+                        <div class="mr-4">
+                            <div class="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">ফলাফল প্রকাশ</h4>
+                            <p class="text-gray-600">২০ অক্টোবর, ২০২৫</p>
+                        </div>
+                    </li>
+                    <li class="flex">
+                        <div class="mr-4">
+                            <div class="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">ভর্তির সময়সীমা</h4>
+                            <p class="text-gray-600">২১-৩১ অক্টোবর, ২০২৫</p>
+                        </div>
+                    </li>
+                    <li class="flex">
+                        <div class="mr-4">
+                            <div class="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-school"><path d="m4 6 8-4 8 4"/><path d="m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2"/><path d="M14 22v-4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v4"/><path d="M12 12v6"/></svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">ক্লাস শুরু</h4>
+                            <p class="text-gray-600">১ নভেম্বর, ২০২৫</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="mt-6 p-4 bg-primary/5 border border-primary/20 rounded-lg text-center">
+            <p class="text-gray-700"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-circle text-primary mr-2 inline"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg> উপরোক্ত তারিখগুলি অনিবার্য কারণে পরিবর্তন হতে পারে। সরবশেষ আপডেট জানতে <a href="notice.html" class="text-primary hover:underline">নোটিশ বোর্ড</a> দেখুন।</p>
+        </div>
+    </div>
+</div>
+
+<!-- FAQ Section -->
+<div id="faq" class="mb-16">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-semibold mb-6 pb-2 border-b border-gray-200">সাধারণ প্রশ্নোত্তর (FAQ)</h2>
+        
+        <div class="space-y-4">
+            {% include "components/faq.html" with question='কলেজে ভর্তির জন্য কি ভর্তি পরীক্ষা দিতে হবে?' answer='হ্যাঁ, উচ্চ মাধ্যমিক ও স্নাতক (সম্মান) প্রোগ্রামে ভর্তির জন্য ভর্তি পরীক্ষা দিতে হবে। তবে, স্নাতক (পাস) কোর্সে ভর্তির জন্য কেবল মেধা তালিকার ভিত্তিতে শিক্ষার্থী নির্বাচন করা হয়, তাদের ভর্তি পরীক্ষা দিতে হয় না।' %}
+            {% include "components/faq.html" with question='ভর্তি প্রক্রিয়ার স্ট্যাটাস কিভাবে জানব?' answer='ভর্তি প্রক্রিয়ার স্ট্যাটাস জানতে আপনি আমাদের ওয়েবসাইটে আপনার আবেদন আইডি ব্যবহার করে লগইন করতে পারেন। এছাড়াও ভর্তি অফিসে সরাসরি যোগাযোগ করে আপনার আবেদনের অবস্থা সম্পর্কে জানতে পারেন।' %}
+            {% include "components/faq.html" with question='বৃত্তি সুবিধা সম্পর্কে জানতে চাই।' answer='আমাদের কলেজে মেধাবী ও অর্থনৈতিকভাবে অসচ্ছল শিক্ষার্থীদের জন্য বিভিন্ন ধরনের বৃত্তি রয়েছে। এর মধ্যে সরকারি উপবৃত্তি, কলেজ বৃত্তি, ও বিভিন্ন প্রতিষ্ঠানের বৃত্তি অন্তর্ভুক্ত। বিস্তারিত তথ্য পেতে বৃত্তি শাখায় যোগাযোগ করুন অথবা আমাদের ওয়েবসাইটের বৃত্তি সেকশন দেখুন।' %}
+            {% include "components/faq.html" with question='কলেজে হোস্টেল সুবিধা আছে কি?' answer='হ্যাঁ, আমাদের কলেজে ছাত্র ও ছাত্রীদের জন্য পৃথক হোস্টেল রয়েছে। হোস্টেল সিট সীমিত সংখ্যক। হোস্টেলে আবেদন করতে ভর্তির সময় হোস্টেল আবেদন ফরম পূরণ করতে হবে। সিট বরাদ্দ দূরত্ব এবং মেধার ভিত্তিতে করা হয়।' %}
+        </div>
+    </div>
+</div>
+
+    
+<script>
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            answer.classList.toggle('max-h-0');
+            answer.classList.toggle('max-h-screen');
+            question.querySelector('svg').classList.toggle('rotate-180');
+        });
+    });
+</script>
+
+{% endblock content %}

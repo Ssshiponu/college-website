@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}{{ notice.title }}{% endblock %}
+{% block content %}
+<!-- Page Title -->
+<div class="bg-gradient-to-r from-primary to-primary-dark text-white py-12">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold mb-2">{{ notice.title }}</h1>
+        <div class="flex items-center text">
+            <a href="{% url 'core:notices' %}" class="hover:text-primary-light transition-colors duration-200">নোটিশ</a>
+            <span class="mx-2">/</span>
+            <span>{{ notice.title|truncatechars:30 }}</span>
+        </div>
+    </div>
+</div>
+
+<!-- Notice Detail Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+            <!-- Notice Header -->
+            <div class="mb-6">
+                <div class="flex items-center justify-between flex-wrap gap-4">
+                    <div class="flex items-center gap-3">
+                        <span class="{{ notice.category_color }} text-xs px-2 py-1 rounded">{{ notice.get_category_display }}</span>
+                        {% if notice.is_important %}
+                        <span class="bg-primary text-white text-xs px-2 py-1 rounded">প্রধান</span>
+                        {% endif %}
+                    </div>
+                    <span class="text-gray-500 text-sm">{{ notice.publish_date|date:"d F, Y" }}</span>
+                </div>
+            </div>
+
+            <!-- Notice Content -->
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+                <h2 class="text-2xl font-semibold mb-4 text-gray-800">{{ notice.title }}</h2>
+                <div class="prose max-w-none text-gray-700 leading-relaxed">
+                    <p>{{ notice.description }}</p>
+                </div>
+
+                <!-- Document Handling -->
+                {% if notice.document %}
+                
+                <div class="mt-6">
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">সংযুক্ত নথি</h3>
+                    {% if is_image %}
+                    
+                    <!-- Preview Image -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <img src="{{ notice.document.url }}" alt="Notice Document" class="w-full max-h-[500px] object-contain">
+                    </div>
+                    <a href="{{ notice.document.url }}" download class="mt-2 inline-flex items-center text-primary hover:text-primary-dark transition-colors duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download mr-2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                        ডাউনলোড করুন
+                    </a>
+                    
+                    {% else %}
+                    <!-- Download Link for Non-Image Files -->
+                    <div class="bg-gray-50 border border-gray-200 rounded p-4 flex items-center justify-between">
+                        <span class="text-gray-700">{{ notice.document.name }}</span>
+                        <a href="{{ notice.document.url }}" download class="text-primary hover:text-primary-dark transition-colors duration-200 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download mr-2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                            ডাউনলোড করুন
+                        </a>
+                    </div> 
+                    {% endif %}
+                </div>
+                
+                {% endif %}
+            </div>
+
+            <!-- Back to Notices Link -->
+            <div class="mt-6">
+                <a href="{% url 'core:notices' %}" class="text-primary flex items-center group hover:text-primary-dark transition-colors duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left mr-2 group-hover:-translate-x-1 transition-transform duration-200"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                    সকল নোটিশে ফিরে যান
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

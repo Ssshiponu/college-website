@@ -1,0 +1,94 @@
+{% load static %}
+<header class="bg-white py-4 sticky top-0 z-50 shadow-md">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="{% url 'core:home' %}" class="flex items-center group">
+                    <img src="{% static 'images/logo.png' %}" alt="College Logo" class="h-16 mr-3 rounded-full group-hover:opacity-90 transition-opacity duration-200">
+                    <div>
+                        <h1 class="text-xl font-semibold text-gray-800 group-hover:text-primary transition-colors duration-200">ধামরাই সরকারি কলেজ</h1>
+                        <p class="text-sm text-gray-600">Dhamrai Government College</p>
+                    </div>
+                </a>
+            </div>
+            
+            <nav class="hidden lg:block">
+                <ul class="flex space-x-6">
+                    <li><a href="{% url 'core:home' %}" class="nav-link-active">হোম</a></li>
+                    <li class="relative group">
+                        <a href="#" class="nav-link">আমাদের সম্পর্কে <span class="inline-block transition-transform duration-200 group-hover:rotate-180"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg></span></a>
+                        <ul class="hidden group-hover:block absolute left-0 top-full w-48 bg-white border border-gray-100 py-2 z-50">
+                            <li><a href="{% url "core:history" %}" class="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200">কলেজের ইতিহাস</a></li>
+                            <li><a href="{% url "core:faculty" %}" class="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200">শিক্ষক-শিক্ষিকা</a></li>
+                            <li><a href="{% url "core:faculty" %}" class="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200">ক্যাম্পাস</a></li>
+                        </ul>
+                    </li>
+                    <li class="relative group">
+                        <a href="#" class="nav-link">একাডেমিক <span class="inline-block transition-transform duration-200 group-hover:rotate-180"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg></span></a>
+                        <ul class="hidden group-hover:block absolute left-0 top-full w-48 bg-white border border-gray-100 py-2 z-50">
+                            <li><a href="{% url "core:programs" %}" class="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200">প্রোগ্রামসমূহ</a></li>
+                            <li><a href="{% url "core:departments" %}" class="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200">বিভাগসমূহ</a></li>
+                            <li><a href="{% url "core:calender" %}" class="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200">একাডেমিক ক্যালেন্ডার</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{% url "core:admission" %}" class="nav-link">ভর্তি</a></li>
+                    <li><a href="{% url "core:notices" %}" class="nav-link">নোটিশ</a></li>
+                    <li><a href="{% url "core:gallery" %}" class="nav-link">গ্যালারি</a></li>
+                    <li><a href="{% url "core:contact" %}" class="nav-link">যোগাযোগ</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Mobile menu button -->
+            <button id="mobileMenuBtn" class="block lg:hidden text-gray-700 focus:outline-none">
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden mt-4">
+            <ul class="space-y-2">
+                <li><a href="{% url "core:home" %}" class="nav-link-active">হোম</a></li>
+                <li class="mobile-dropdown">
+                    <button class="flex justify-between items-center w-full py-2 text-gray-700">
+                        আমাদের সম্পর্কে
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <ul class="hidden pl-4 py-2 space-y-2 border-l-2 border-green-500">
+                        <li><a href="{% url "core:history" %}" class="nav-link">কলেজের ইতিহাস</a></li>
+                        <li><a href="{% url "core:faculty" %}" class="nav-link">শিক্ষক-শিক্ষিকা</a></li>
+                        <li><a href="{% url "core:faculty" %}" class="nav-link">ক্যাম্পাস</a></li>
+                    </ul>
+                </li>
+                <li class="mobile-dropdown">
+                    <button class="flex justify-between items-center w-full py-2 text-gray-700">
+                        একাডেমিক
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <ul class="hidden pl-4 py-2 space-y-2 border-l-2 border-green-500">
+                        <li><a href="{% url "core:programs" %}" class="nav-link">প্রোগ্রামসমূহ</a></li>
+                        <li><a href="{% url "core:departments" %}" class="nav-link">বিভাগসমূহ</a></li>
+                        <li><a href="{% url "core:calender" %}" class="nav-link">একাডেমিক ক্যালেন্ডার</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url "core:admission" %}" class="nav-link">ভর্তি</a></li>
+                <li><a href="{% url "core:notices" %}" class="nav-link">নোটিশ</a></li>
+                <li><a href="{% url "core:gallery" %}" class="nav-link">গ্যালারি</a></li>
+                <li><a href="{% url "core:contact" %}" class="nav-link">যোগাযোগ</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    mobileMenuBtn.addEventListener('click', function() {
+        document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+    
+    mobileMenuBtn.innerHTML = document.getElementById('mobileMenu').classList.contains('hidden') ? '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>' : '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>';
+
+
+    document.querySelectorAll('.mobile-dropdown button').forEach(button => {
+        button.addEventListener('click', function() {
+            this.nextElementSibling.classList.toggle('hidden');
+        });
+    });
+</script>
