@@ -56,9 +56,15 @@ class FacultyDetailView(DetailView):
 
 class DepartmentListView(ListView):
     model = Department
-    template_name = 'departments.html'
-    context_object_name = 'departments'
+    template_name = "departments.html" 
+    context_object_name = "departments"  
+    ordering = ["name"]  
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["page_title"] = "বিভাগসমূহ"  
+        return context
+    
 class DepartmentDetailView(DetailView):
     model = Department
     template_name = 'department_detail.html'
@@ -67,7 +73,7 @@ class DepartmentDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         department = self.get_object()
-        context['faculty_members'] = Faculty.objects.filter(department=department)
+        context['faculty'] = Faculty.objects.filter(department=department)
         context['programs'] = Program.objects.filter(department=department)
         return context
 

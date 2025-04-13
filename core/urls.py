@@ -15,7 +15,7 @@ urlpatterns = [
     
     # Department URLs
     path('about/departments/', views.DepartmentListView.as_view(), name='departments'),
-    path('departments/<slug:slug>/', views.DepartmentDetailView.as_view(), name='department_detail'),
+    path('department/<slug:slug>/', views.DepartmentDetailView.as_view(), name='department_detail'),
     
     # Notice URLs
     path('notices/', views.NoticeListView.as_view(), name='notices'),

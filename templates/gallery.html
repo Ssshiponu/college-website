@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Gallery{% endblock %}
+{% block content %}
+<!-- Page Title -->
+<div class="bg-gradient-to-r from-primary to-primary-dark text-white py-12">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold mb-2">গ্যালারি</h1>
+        <div class="flex items-center text">
+            <a href="../index.html" class="hover:text-primary-light transition-colors duration-200">হোম</a>
+            <span class="mx-2">/</span>
+            <span>গ্যালারি</span>
+        </div>
+    </div>
+</div>
+
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4 p-4">
+            {% for image in images %}
+            <div class="aspect-[4/3] relative group">
+                <img src="{{ image.image.url }}" alt="Description of image 1" class="w-full h-full object-cover" loading="lazy">
+                <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white">
+                  {{ image.title }}
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

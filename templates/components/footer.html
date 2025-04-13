@@ -139,41 +139,14 @@
     <!-- Bottom Footer -->
     <div class="bg-gray-900 py-6">
         <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="flex flex-col md:flex-row justify-between items-start text-sm">
                 <div class="text-center md:text-left mb-4 md:mb-0">
                     <p>&copy; ২০২৪ ধামরাই সরকারি কলেজ। সর্বস্বত্ব সংরক্ষিত।</p>
                 </div>
-                <div class="flex space-x-4">
-                    <a href="pages/privacy-policy.html" class="text-gray-400 hover:text-primary transition-colors duration-200">গোপনীয়তা নীতি</a>
-                    <span class="text-gray-600">|</span>
-                    <a href="pages/terms.html" class="text-gray-400 hover:text-primary transition-colors duration-200">ব্যবহারের শর্তাবলী</a>
-                    <span class="text-gray-600">|</span>
-                    <a href="pages/sitemap.html" class="text-gray-400 hover:text-primary transition-colors duration-200">সাইটম্যাপ</a>
+                <div class="mr-4 text-center">
+                    Developer: <a href="" class="hover:underline text-primary">Mohin Uddin Shipon</a>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- Back to Top Button -->
-    <a href="#" id="backToTop" class="fixed bottom-6 right-6 bg-primary hover:bg-primary-dark opacity-90 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 opacity-0 invisible">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up"><path d="m18 15-6-6-6 6"/></svg>
-    </a>
 </footer>
-<script>
-    const backToTopButton = document.getElementById('backToTop');
-        
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backToTopButton.classList.remove('opacity-0', 'invisible');
-            backToTopButton.classList.add('opacity-100', 'visible');
-        } else {
-            backToTopButton.classList.add('opacity-0', 'invisible');
-            backToTopButton.classList.remove('opacity-100', 'visible');
-        }
-    });
-    
-    backToTopButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-</script>

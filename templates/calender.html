@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block title %}Calendar{% endblock %}
+{% block content %}
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-6xl">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-800">একাডেমিক ক্যালেন্ডার - ২০২৫</h2>
+
+        <div class="overflow-x-auto">
+            <table class="w-full border-collapse">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th scope="col" class="py-3 px-4 text-left w-1/12">মাস</th>
+                        <th scope="col" class="py-3 px-4 text-left w-2/12">তারিখ</th>
+                        <th scope="col" class="py-3 px-4 text-left w-5/12">কার্যক্রম</th>
+                        <th scope="col" class="py-3 px-4 text-left w-4/12">মন্তব্য</th>
+                    </tr>
+                </thead>
+                
+                <tbody class="divide-y divide-gray-200">
+                    <!-- এপ্রিল -->
+                    <tr class="bg-blue-50">
+                        <td colspan="4" class="py-3 px-4 font-bold text-primary-dark">এপ্রিল</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="py-3 px-4">১৪</td>
+                        <td class="py-3 px-4">পহেলা বৈশাখ (সরকারি ছুটি)</td>
+                        <td class="py-3 px-4">কলেজ বন্ধ</td>
+                        <td class="py-3 px-4"></td>
+                    </tr>
+
+                    <!-- মে -->
+                    <tr class="bg-blue-50">
+                        <td colspan="4" class="py-3 px-4 font-bold text-blue-800">মে</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="py-3 px-4">১</td>
+                        <td class="py-3 px-4">মে দিবস (সরকারি ছুটি)</td>
+                        <td class="py-3 px-4">কলেজ বন্ধ</td>
+                        <td class="py-3 px-4"></td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="py-3 px-4">১২</td>
+                        <td class="py-3 px-4">এসএসসি ফলাফল প্রকাশ</td>
+                        <td class="py-3 px-4">উচ্চ মাধ্যমিক ভর্তির জন্য গুরুত্বপূর্ণ</td>
+                        <td class="py-3 px-4"></td>
+                    </tr>
+
+                    <!-- জুন -->
+                    <tr class="bg-blue-50">
+                        <td colspan="4" class="py-3 px-4 font-bold text-blue-800">জুন</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="py-3 px-4">১–১৫</td>
+                        <td class="py-3 px-4"></td>
+                        <td class="py-3 px-4">উচ্চ মাধ্যমিক (HSC) শ্রেণির অনলাইন আবেদন গ্রহণ</td>
+                        <td class="py-3 px-4">এসএসসি ফলাফলের পরে ভর্তি শুরু হয়</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="py-3 px-4">২৬–৩০</td>
+                        <td class="py-3 px-4"></td>
+                        <td class="py-3 px-4">এইচএসসি পরীক্ষা শুরু</td>
+                        <td class="py-3 px-4">এইচএসসি পরীক্ষা রুটিন অনুযায়ী</td>
+                    </tr>
+
+                    <!-- জুলাই -->
+                    <tr class="bg-blue-50">
+                        <td colspan="4" class="py-3 px-4 font-bold text-blue-800">জুলাই</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="py-3 px-4">১</td>
+                        <td class="py-3 px-4"></td>
+                        <td class="py-3 px-4">উচ্চ মাধ্যমিক (HSC) শ্রেণির ক্লাস শুরু</td>
+                        <td class="py-3 px-4"></td>
+                    </tr>
+
+                    <!-- আগস্ট -->
+                    <tr class="bg-blue-50">
+                        <td colspan="4" class="py-3 px-4 font-bold text-blue-800">আগস্ট</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="py-3 px-4">১</td>
+                        <td class="py-3 px-4"></td>
+                        <td class="py-3 px-4">উচ্চ মাধ্যমিক (HSC) শ্রেণির ক্লাস শুরু</td>
+                        <td class="py-3 px-4"></td>
+                    </tr>
+
+                    <!-- অক্টোবর -->
+                    <tr class="bg-blue-50">
+                        <td colspan="4" class="py-3 px-4 font-bold text-blue-800">অক্টোবর</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="py-3 px-4"></td>
+                        <td class="py-3 px-4"></td>
+                        <td class="py-3 px-4">এইচএসসি ফলাফল প্রকাশ</td>
+                        <td class="py-3 px-4">উচ্চ শিক্ষার জন্য গুরুত্বপূর্ণ</td>
+                    </tr>
+
+                    <!-- ডিসেম্বর -->
+                    <tr class="bg-blue-50">
+                        <td colspan="4" class="py-3 px-4 font-bold text-blue-800">ডিসেম্বর</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="py-3 px-4">২০–৩০</td>
+                        <td class="py-3 px-4"></td>
+                        <td class="py-3 px-4">বার্ষিক পরীক্ষা (উচ্চ মাধ্যমিক)</td>
+                        <td class="py-3 px-4">পরীক্ষা রুটিন অনুযায়ী</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-8 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+            <p class="text-sm text-gray-700 leading-relaxed">
+                <span class="font-semibold text-yellow-700">দ্রষ্টব্য:</span> 
+                এই একাডেমিক ক্যালেন্ডারটি পরিবর্তনযোগ্য। সর্বশেষ আপডেটের জন্য কলেজের 
+                <a href="#" class="text-blue-600 hover:underline font-medium">অফিসিয়াল ওয়েবসাইট</a> 
+                নোটিশ দেখুন। কোন পরিবর্তন হলে তা ওয়েবসাইটে প্রকাশ করা হবে।
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}
