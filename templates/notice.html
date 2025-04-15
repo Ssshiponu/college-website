@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Notice{% endblock %}
+{% block title %}ধাসক - নোটিশ{% endblock %}
 {% block content %}
 <!-- Page Title -->
 <div class="bg-gradient-to-r from-primary to-primary-dark text-white py-12">
@@ -76,8 +76,8 @@
                 {% if featured_notice %}
                 <div class="bg-primary/5 border border-primary/20 rounded p-6 mb-8">
                     <div class="flex items-center mb-2">
-                        <span class="bg-primary text-white text-xs px-2 py-1 rounded">প্রধান</span>
-                        <span class="text-gray-500 text-sm ml-3">{{ featured_notice.publish_date|date:"d F, Y" }}</span>
+                        <span class="bg-primary text-white text-xs px-2 py-1 rounded mr-1">গুরুত্বপূর্ণ</span>
+                        <span class="text-gray-500 text-sm ml-3">{{ featured_notice.publish_date|date:"d F, Y" }} | {{ featured_notice.category }}</span>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">{{ featured_notice.title }}</h3>
                     <p class="text-gray-600 mb-4">{{ featured_notice.description|truncatewords:50 }}</p>
@@ -86,9 +86,7 @@
                             সম্পূর্ণ নোটিশ পড়ুন
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-200"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                         </a>
-                        <div class="flex items-center">
-                            <span class="{{ featured_notice.category_color }} text-xs px-2 py-1 rounded">{{ featured_notice.get_category_display }}</span>
-                        </div>
+                        
                     </div>
                 </div>
                 {% endif %}
@@ -98,8 +96,7 @@
                     {% for notice in notices %}
                     <div class="bg-white border border-gray-200 rounded p-5">
                         <div class="flex justify-between items-start mb-3">
-                            <span class="text-gray-500 text-sm">{{ notice.publish_date|date:"d F, Y" }}</span>
-                            <span class="{{ notice.category_color }} text-xs px-2 py-1 rounded">{{ notice.get_category_display }}</span>
+                            <span class="text-gray-500 text-sm">{{ notice.publish_date|date:"d F, Y" }} | {{ notice.category }}</span>
                         </div>
                         <h3 class="text-lg font-semibold mb-2">{{ notice.title }}</h3>
                         <p class="text-gray-600 mb-3 line-clamp-2">{{ notice.description|truncatewords:30 }}</p>

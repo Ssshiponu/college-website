@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Dhamrai Government College{% endblock title %}
+{% block title %}ধামরাই সরকারি কলেজে{% endblock title %}
 {% block content %}
 <!-- Hero Section -->
 <section class="bg-gradient-to-r from-primary to-primary-dark text-white py-16">
@@ -9,7 +9,7 @@
         <p class="text-xl mb-8">১৯৭২ সাল থেকে মানসম্পন্ন শিক্ষার মাধ্যমে ভবিষ্যৎ গড়ছি</p>
         <div class="flex flex-wrap justify-center gap-4">
             <a href="{% url 'core:admission' %}" class="btn-primary bg-white text-primary hover:bg-gray-100">ভর্তির জন্য আবেদন করুন</a>
-            <a href="{% url 'core:programs' %}" class="btn-outline">প্রোগ্রামসমূহ দেখুন</a>
+            <a href="/admission/#admission-programs" class="btn-outline">প্রোগ্রামসমূহ দেখুন</a>
         </div>
         
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 max-w-3xl mx-auto">
@@ -101,11 +101,10 @@
                     {% if notices %}
                     {% for notice in notices  %}
                     <div class="pt-6">
-                        <div class="flex justify-between items-center mb-3">
-                            <span class="text-gray-600 text-sm font-medium">{{ notice.publish_date|date:"d M Y" }}</span>
-                            <span class="bg-green-100 text-primary text-xs font-semibold px-3 py-1 rounded-full">{{ notice.category }}</span>
+                        <div class="mb-3">
+                            <span class="text-gray-600 text-sm font-thin">{{ notice.publish_date|date:"d M Y" }} | {{ notice.category }}</span>
                         </div>
-                        <h4 class="text-lg font-semibold text-gray-900">{{ notice.title }}</h4>
+                        <a href="{% url 'core:notice_detail' notice.slug %}" class="text-lg font-semibold text-gray-900 hover:underline">{{ notice.title }}</a>
                     </div>
                    {% endfor %}
                    {% else %}
@@ -123,11 +122,11 @@
                     {% if events %}
                     {% for event in events %}
                     <div class="pt-6">
-                        <div class="flex justify-between items-center mb-3">
-                            <span class="text-gray-600 text-sm font-thin">{{ event.date|date:"d M Y" }} |  {{ event.time }}</span>
-                            <span class="bg-green-100 text-primary text-xs font-semibold px-3 py-1 rounded-full">{{ event.location }}</span>
+                        <div class="mb-3">
+                            <span class="text-gray-600 text-sm font-thin">{{ event.date|date:"d M Y" }} |  {{ event.time }} | <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-1"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> {{ event.location }}</span>
+                            
                         </div>
-                        <h4 class="text-lg font-semibold text-gray-900">{{ event.title }}</h4>
+                        <a href="{% url 'core:event_detail' event.slug %}" class="text-lg font-semibold text-gray-900 hover:underline">{{ event.title }}</a>
                     </div>
                     {% endfor %}
                     {% else %}
@@ -393,7 +392,7 @@
             </div>
             
             <div class="text-center mt-10">
-                <a href="" class="btn-primary">সকল অভিজ্ঞতা দেখুন</a>
+                <a href="{% url "core:alumni" %}" class="btn-primary">সকল অভিজ্ঞতা দেখুন</a>
             </div>
         </div>
     </section>
@@ -414,9 +413,9 @@
                     </div>
                     <div class="mb-4">
                         <span class="block text-3xl font-bold text-primary">১৫</span>
-                        <span class="text-gray-600">জুন, ২০২৪</span>
+                        <span class="text-gray-600">জুন, ২০২৫</span>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">২০২৪-২৫ শিক্ষাবর্ষের ভর্তি শুরু</h3>
+                    <h3 class="text-xl font-semibold mb-2">২০২৫-২০২৬ শিক্ষাবর্ষের ভর্তি শুরু</h3>
                     <p class="text-gray-600">উচ্চ মাধ্যমিক ও স্নাতক প্রথম বর্ষে ভর্তি কার্যক্রম শুরু হবে।</p>
                 </div>
                 
@@ -424,7 +423,7 @@
                 <div class="border border-gray-200 rounded p-6 hover:border-primary transition-colors duration-200">
                     <div class="mb-4">
                         <span class="block text-3xl font-bold text-primary">২৫</span>
-                        <span class="text-gray-600">জুন, ২০২৪</span>
+                        <span class="text-gray-600">জুন, ২০২৫</span>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">প্রথম সেমিস্টার ক্লাস শুরু</h3>
                     <p class="text-gray-600">সকল বিভাগের প্রথম সেমিস্টারের ক্লাস কার্যক্রম শুরু হবে।</p>
@@ -434,7 +433,7 @@
                 <div class="border border-gray-200 rounded p-6 hover:border-primary transition-colors duration-200">
                     <div class="mb-4">
                         <span class="block text-3xl font-bold text-primary">১০</span>
-                        <span class="text-gray-600">জুলাই, ২০২৪</span>
+                        <span class="text-gray-600">জুলাই, ২০২৫</span>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">বার্ষিক ক্রীড়া প্রতিযোগিতা</h3>
                     <p class="text-gray-600">সপ্তাহব্যাপী বার্ষিক ক্রীড়া ও সাংস্কৃতিক প্রতিযোগিতার আয়োজন করা হবে।</p>
@@ -444,7 +443,7 @@
                 <div class="border border-gray-200 rounded p-6 hover:border-primary transition-colors duration-200">
                     <div class="mb-4">
                         <span class="block text-3xl font-bold text-primary">১৬</span>
-                        <span class="text-gray-600">অগাস্ট, ২০২৪</span>
+                        <span class="text-gray-600">অগাস্ট, ২০২৫</span>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">মধ্য সেমিস্টার পরীক্ষা</h3>
                     <p class="text-gray-600">প্রথম সেমিস্টারের মধ্য সেমিস্টার পরীক্ষা অনুষ্ঠিত হবে।</p>

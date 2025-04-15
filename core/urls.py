@@ -34,7 +34,13 @@ urlpatterns = [
     # Gallery URL
     path('gallery/', views.GalleryView.as_view(), name='gallery'),
 
-    # 
+    # Alumni URL
+    path('alumni/', views.AlumniView.as_view(), name='alumni'),
+
+    # Result URL
+    path('result/', views.ResultView.as_view(), name='result'),
+
+    # calendars URL
     path("calender/", views.CalenderView.as_view(), name="calender"),
     
     # Admission URL

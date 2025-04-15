@@ -22,15 +22,15 @@
                     </li>
                     <li class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone mr-2 text-primary"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        <span>+৮৮০-২-১২৩৪৫৬৭</span>
+                        <span>+৮৮০১২৩৪৫৬৭</span>
                     </li>
                     <li class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail mr-2 text-primary"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                        <span>info@dhamraigovtcollege.edu.bd</span>
+                        <span>info@dham...ege.edu.bd</span>
                     </li>
                     <li class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock mr-2 text-primary"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        <span>অফিস সময়: রবিবার-বৃহস্পতিবার, সকাল ৮টা - বিকাল ৫টা</span>
+                        <span>অফিস সময়: রবিবার-বৃহস্পতিবার, সকাল ৯টা - বিকাল ৩টা</span>
                     </li>
                 </ul>
             </div>
@@ -39,31 +39,31 @@
             <div>
                 <h3 class="text-lg font-semibold mb-4">দ্রুত লিংক</h3>
                 <ul class="space-y-2">
-                    <li><a href="pages/admission.html" class="hover:text-primary transition-colors duration-200 flex items-center">
+                    <li><a href="{% url "core:admission" %}" class="hover:text-primary transition-colors duration-200 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2"><path d="m9 18 6-6-6-6"/></svg>
                         ভর্তি তথ্য
                     </a></li>
-                    <li><a href="pages/notice.html" class="hover:text-primary transition-colors duration-200 flex items-center">
+                    <li><a href="{% url "core:notices" %}" class="hover:text-primary transition-colors duration-200 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2"><path d="m9 18 6-6-6-6"/></svg>
                         নোটিশ
                     </a></li>
-                    <li><a href="pages/results.html" class="hover:text-primary transition-colors duration-200 flex items-center">
+                    <li><a href="{% url "core:result" %}" class="hover:text-primary transition-colors duration-200 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2"><path d="m9 18 6-6-6-6"/></svg>
                         রেজাল্ট
                     </a></li>
-                    <li><a href="pages/events.html" class="hover:text-primary transition-colors duration-200 flex items-center">
+                    <li><a href="{% url "core:events" %}" class="hover:text-primary transition-colors duration-200 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2"><path d="m9 18 6-6-6-6"/></svg>
                         ইভেন্টস
                     </a></li>
-                    <li><a href="pages/alumni.html" class="hover:text-primary transition-colors duration-200 flex items-center">
+                    <li><a href="{% url "core:alumni" %}" class="hover:text-primary transition-colors duration-200 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2"><path d="m9 18 6-6-6-6"/></svg>
                         সাবেক শিক্ষার্থী
                     </a></li>
-                    <li><a href="pages/gallery.html" class="hover:text-primary transition-colors duration-200 flex items-center">
+                    <li><a href="{% url "core:gallery" %}" class="hover:text-primary transition-colors duration-200 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2"><path d="m9 18 6-6-6-6"/></svg>
                         গ্যালারি
                     </a></li>
-                    <li><a href="pages/contact.html" class="hover:text-primary transition-colors duration-200 flex items-center">
+                    <li><a href="{% url "core:contact" %}" class="hover:text-primary transition-colors duration-200 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2"><path d="m9 18 6-6-6-6"/></svg>
                         যোগাযোগ
                     </a></li>
@@ -74,29 +74,18 @@
             <div>
                 <h3 class="text-lg font-semibold mb-4">একাডেমিক প্রোগ্রাম</h3>
                 <ul class="space-y-2">
-                    <li><a href="pages/academics/science.html" class="hover:text-primary transition-colors duration-200 flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2"><path d="m9 18 6-6-6-6"/></svg>
-                        বিজ্ঞান বিভাগ
-                    </a></li>
-                    <li><a href="pages/academics/humanities.html" class="hover:text-primary transition-colors duration-200 flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2"><path d="m9 18 6-6-6-6"/></svg>
-                        মানবিক বিভাগ
-                    </a></li>
-                    <li><a href="pages/academics/commerce.html" class="hover:text-primary transition-colors duration-200 flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2"><path d="m9 18 6-6-6-6"/></svg>
-                        বাণিজ্য বিভাগ
-                    </a></li>
-                    <li><a href="pages/academics/postgraduate.html" class="hover:text-primary transition-colors duration-200 flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2"><path d="m9 18 6-6-6-6"/></svg>
-                        স্নাতকোত্তর বিভাগ
-                    </a></li>
-                    <li><a href="pages/academics/calendar.html" class="hover:text-primary transition-colors duration-200 flex items-center">
+                    
+                    <li><a href="{% url "core:calender" %}" class="hover:text-primary transition-colors duration-200 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2"><path d="m9 18 6-6-6-6"/></svg>
                         একাডেমিক ক্যালেন্ডার
                     </a></li>
-                    <li><a href="pages/academics/departments.html" class="hover:text-primary transition-colors duration-200 flex items-center">
+                    <li><a href="{% url "core:departments" %}" class="hover:text-primary transition-colors duration-200 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2"><path d="m9 18 6-6-6-6"/></svg>
                         বিভাগসমূহ
+                    </a></li>
+                    <li><a href="{% url "core:faculty" %}" class="hover:text-primary transition-colors duration-200 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mr-2"><path d="m9 18 6-6-6-6"/></svg>
+                         শিক্ষক-শিক্ষিকা
                     </a></li>
                 </ul>
             </div>
@@ -141,10 +130,13 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-start text-sm">
                 <div class="text-center md:text-left mb-4 md:mb-0">
-                    <p>&copy; ২০২৪ ধামরাই সরকারি কলেজ। সর্বস্বত্ব সংরক্ষিত।</p>
+                    <p>&copy; <span id="currentYear"></span> ধামরাই সরকারি কলেজ। সর্বস্বত্ব সংরক্ষিত।</p>
+                    <script>
+                        document.getElementById('currentYear').textContent = new Date().getFullYear();
+                    </script>
                 </div>
                 <div class="mr-4 text-center">
-                    Developer: <a href="" class="hover:underline text-primary">Mohin Uddin Shipon</a>
+                    Developer: <a href="https://mohinuddin.netlify.app" target="_blank" class="hover:underline text-primary">Mohin Uddin Shipon</a>
                 </div>
             </div>
         </div>

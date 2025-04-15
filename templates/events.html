@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}ধাসক - ইভেন্টস{% endblock %}
+{% block content %}
+<!-- Page Title -->
+<div class="bg-gradient-to-r from-primary to-primary-dark text-white py-12">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold mb-2">ইভেন্টস</h1>
+        <div class="flex items-center text">
+            <a href="{% url 'core:home' %}" class="hover:text-primary-light transition-colors duration-200">হোম</a>
+            <span class="mx-2">/</span>
+            <span>ইভেন্টস</span>
+        </div>
+    </div>
+</div>
+
+<!-- Events Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Main content -->
+            <div class="lg:w-3/4 mx-auto">
+                <!-- Featured Event -->
+                {% if featured_event %}
+                <div class="bg-primary/5 border border-primary/20 rounded p-6 mb-8">
+                    <div class="flex items-center mb-2">
+                        <span class="bg-primary text-white text-xs px-2 py-1 rounded">প্রধান</span>
+                        <span class="text-gray-500 text-sm ml-3">{{ featured_event.publish_date|date:"d F, Y" }}</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">{{ featured_event.title }}</h3>
+                    <p class="text-gray-600 mb-4">{{ featured_event.description|truncatewords:50 }}</p>
+                    <div class="flex justify-between items-center">
+                        <a href="{% url 'core:event_detail' featured_event.slug %}" class="text-primary flex items-center group hover:text-primary-dark transition-colors duration-200">
+                            সম্পূর্ণ নোটিশ পড়ুন
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-200"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                        
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Notice Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {% for event in events %}
+                    <div class="bg-white border border-gray-200 rounded p-5">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-gray-500 text-sm">{{ event.publish_date|date:"d F, Y" }}</span>
+                            <span class="{{ event.category_color }} text-xs px-2 py-1 rounded">{{ event.get_category_display }}</span>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">{{ event.title }}</h3>
+                        <p class="text-gray-600 mb-3 line-clamp-2">{{ event.description|truncatewords:30 }}</p>
+                        <a href="{% url 'core:event_detail' event.slug %}" class="text-primary flex items-center group hover:text-primary-dark transition-colors duration-200">
+                            সম্পূর্ণ নোটিশ পড়ুন
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-200"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                    {% empty %}
+                    <p class="text-gray-600">কোনো নোটিশ পাওয়া যায়নি।</p>
+                    {% endfor %}
+                </div>
+                
+                <!-- Pagination -->
+                {% if is_paginated %}
+                <div class="flex justify-center mt-8">
+                    <nav class="inline-flex">
+                        {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}" class="px-3 py-1 border border-gray-300 bg-white text-gray-500 rounded-l">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                        {% endif %}
+                        {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                        <a href="?page={{ num }}" class="px-3 py-1 border-t border-b border-gray-300 bg-primary text-white">{{ num }}</a>
+                        {% else %}
+                        <a href="?page={{ num }}" class="px-3 py-1 border-t border-b border-gray-300 bg-white text-gray-700">{{ num }}</a>
+                        {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}" class="px-3 py-1 border border-gray-300 bg-white text-gray-500 rounded-r">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                        {% endif %}
+                    </nav>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

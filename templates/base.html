@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Official website of Dhamrai Government College - Providing quality education since 1972">
     <title> {% block title %}{% endblock title %}</title>
+    <link rel="icon" href="{% static 'images/logo.png' %}" type="image/png">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,8 +16,7 @@
     {% block head %}{% endblock head %}
 </head>
 <body class="font-poppins text-gray-700 bg-gray-50">
-    {% include "components/announcement_banner.html" with announcement_text='২০২৫-২০২৬ শিক্ষাবর্ষের ভর্তি চলছে!' link='#' link_text='ভর্তির তথ্য' %}
-    
+    {% include "components/announcement_banner.html" with announcement_text='২০২৫-২০২৬ শিক্ষাবর্ষের ভর্তি চলছে!' link='/admission' link_text='ভর্তির তথ্য' %}
     {% include "components/header.html" %}
     {% block content %}{% endblock content %}
     {% include "components/footer.html" %}

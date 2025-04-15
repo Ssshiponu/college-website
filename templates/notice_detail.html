@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{{ notice.title }}{% endblock %}
+{% block title %}ধাসক - {{ notice.title }}{% endblock %}
 {% block content %}
 <!-- Page Title -->
 <div class="bg-gradient-to-r from-primary to-primary-dark text-white py-12">
@@ -42,7 +42,7 @@
                 
                 <div class="mt-6">
                     <h3 class="text-lg font-semibold mb-2 text-gray-800">সংযুক্ত নথি</h3>
-                    {% if is_image %}
+                    {% if notice.document.url|endswith(".jpg") %}
                     
                     <!-- Preview Image -->
                     <div class="border border-gray-200 rounded-lg overflow-hidden">

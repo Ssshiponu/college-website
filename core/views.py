@@ -103,16 +103,6 @@ class NoticeDetailView(DetailView):
     template_name = 'notice_detail.html'
     context_object_name = 'notice'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        notices = Notice.objects.all()
-        for notice in notices:
-            if notice.document and notice.document.name.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
-                is_image = True
-        context['notices'] = notices
-        context['is_image'] = is_image
-        return context
-
 class ProgramListView(ListView):
     model = Program
     template_name = 'programs.html'
@@ -134,7 +124,12 @@ class EventListView(ListView):
     model = Event
     template_name = 'events.html'
     context_object_name = 'events'
-    paginate_by = 9
+    paginate_by = 10
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['featured_event'] = Event.objects.filter(is_featured=True).order_by('-time').first()
+        return context
 
 class EventDetailView(DetailView):
     model = Event
@@ -149,6 +144,12 @@ class GalleryView(ListView):
 
 class CalenderView(TemplateView):
     template_name = 'calender.html'
+
+class AlumniView(TemplateView):
+    template_name = 'alumni.html'
+
+class ResultView(TemplateView):
+    template_name = 'result.html'
 
 class ContactView(TemplateView):
     template_name = 'contact.html'

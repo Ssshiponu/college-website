@@ -65,20 +65,11 @@ class Notice(models.Model):
     is_important = models.BooleanField(default=False)
     slug = models.SlugField(unique=True)
 
+    @property
+    def 
+
     class Meta:
         ordering = ['-publish_date']
-
-    @property
-    def category_color(self):
-        """Return Tailwind CSS classes based on category for UI styling"""
-        color_map = {
-            'academic': 'bg-blue-100 text-blue-600',
-            'admission': 'bg-green-100 text-green-600',
-            'examination': 'bg-red-100 text-red-600',
-            'event': 'bg-pink-100 text-pink-600',
-            'other': 'bg-gray-100 text-gray-600',
-        }
-        return color_map.get(self.category, 'bg-gray-100 text-gray-600')
 
     def __str__(self):
         return self.title
