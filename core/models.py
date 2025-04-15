@@ -65,9 +65,6 @@ class Notice(models.Model):
     is_important = models.BooleanField(default=False)
     slug = models.SlugField(unique=True)
 
-    @property
-    def 
-
     class Meta:
         ordering = ['-publish_date']
 
