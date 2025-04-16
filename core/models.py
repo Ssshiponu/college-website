@@ -50,6 +50,7 @@ class Faculty(models.Model):
 
 class Notice(models.Model):
     CATEGORY_CHOICES = [
+        ('routin', 'রুটিন'),
         ('academic', 'একাডেমিক'),
         ('admission', 'ভর্তি'),
         ('examination', 'পরীক্ষা'),
