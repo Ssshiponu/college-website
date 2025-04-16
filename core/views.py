@@ -7,15 +7,13 @@ class HomeView(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['departments'] = Department.objects.all()[:4]
-        context['faculty_members'] = Faculty.objects.filter(is_featured=True)[:4]
-        context['notices'] = Notice.objects.all()[:5]
+        context['notices'] = Notice.objects.all()[:3]
         context['events'] = Event.objects.filter(is_featured=True)[:3]
         context['principal'] = Faculty.objects.filter(designation='principal').first()
         return context
 
 class HistoryView(TemplateView):
-    template_name = 'about/history.html'
+    template_name = 'history.html'
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -24,7 +22,7 @@ class HistoryView(TemplateView):
 
 class FacultyListView(ListView):
     model = Faculty
-    template_name = 'about/faculty.html'
+    template_name = 'faculty.html'
     context_object_name = 'faculty'
     
     def get_queryset(self):
@@ -51,7 +49,7 @@ class FacultyListView(ListView):
 
 class FacultyDetailView(DetailView):
     model = Faculty
-    template_name = 'about/faculty_detail.html'
+    template_name = 'faculty_detail.html'
     context_object_name = 'faculty'
 
 class DepartmentListView(ListView):
@@ -59,11 +57,6 @@ class DepartmentListView(ListView):
     template_name = "departments.html" 
     context_object_name = "departments"  
     ordering = ["name"]  
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["page_title"] = "বিভাগসমূহ"  
-        return context
     
 class DepartmentDetailView(DetailView):
     model = Department
@@ -97,8 +90,8 @@ class NoticeListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['featured_notice'] = Notice.objects.filter(is_important=True).order_by('-publish_date').first()
+        context['notices'] = Notice.objects.exclude(id=context['featured_notice'].id)
         context['categories'] = Notice.CATEGORY_CHOICES
-        context['path'] = '/notices'
         return context
 
 class NoticeDetailView(DetailView):
@@ -106,18 +99,10 @@ class NoticeDetailView(DetailView):
     template_name = 'notice_detail.html'
     context_object_name = 'notice'
 
-
 class ProgramListView(ListView):
     model = Program
     template_name = 'programs.html'
     context_object_name = 'programs'
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['hsc_programs'] = Program.objects.filter(level='hsc')
-        context['undergraduate_programs'] = Program.objects.filter(level='undergraduate')
-        context['postgraduate_programs'] = Program.objects.filter(level='postgraduate')
-        return context
 
 class ProgramDetailView(DetailView):
     model = Program

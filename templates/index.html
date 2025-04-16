@@ -9,7 +9,7 @@
         <p class="text-xl mb-8">১৯৭২ সাল থেকে মানসম্পন্ন শিক্ষার মাধ্যমে ভবিষ্যৎ গড়ছি</p>
         <div class="flex flex-wrap justify-center gap-4">
             <a href="{% url 'core:admission' %}" class="btn-primary bg-white text-primary hover:bg-gray-100">ভর্তির জন্য আবেদন করুন</a>
-            <a href="/admission/#admission-programs" class="btn-outline">প্রোগ্রামসমূহ দেখুন</a>
+            <a href="{% url 'core:admission' %}" class="btn-outline">প্রোগ্রামসমূহ দেখুন</a>
         </div>
         
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 max-w-3xl mx-auto">

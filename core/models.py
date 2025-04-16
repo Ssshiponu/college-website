@@ -20,6 +20,10 @@ class Department(models.Model):
             self.slug = get_random_string(length=16)
         super().save(*args, **kwargs)
 
+    def __str__(self):
+        return self.name
+    
+
 class Faculty(models.Model):
     DESIGNATION_CHOICES = [
         ('Principal', 'Principal'),

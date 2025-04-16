@@ -4,7 +4,6 @@ from .models import Department, Faculty, Notice, Program, Event, Gallery, Faq
 @admin.register(Department)
 class DepartmentAdmin(admin.ModelAdmin):
     list_display = ('name', 'code', 'department_head', 'established')
-    prepopulated_fields = {'slug': ('name',)}
     search_fields = ('name', 'code', 'department_head')
 
 @admin.register(Faculty)
@@ -24,14 +23,12 @@ class NoticeAdmin(admin.ModelAdmin):
 class ProgramAdmin(admin.ModelAdmin):
     list_display = ('name', 'level', 'department', 'duration')
     list_filter = ('level', 'department')
-    prepopulated_fields = {'slug': ('name',)}
     search_fields = ('name', 'description')
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
     list_display = ('title', 'date', 'location', 'is_featured')
     list_filter = ('is_featured', 'date')
-    prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title', 'description', 'location')
     date_hierarchy = 'date'
 

@@ -8,7 +8,7 @@
     <div class="container mx-auto px-4">
         <h1 class="text-3xl font-bold mb-2">ভর্তি তথ্য</h1>
         <div class="flex items-center text">
-            <a href="../index.html" class="hover:text-primary-light transition-colors duration-200">হোম</a>
+            <a href="{% url 'core:home' %}" class="hover:text-primary-light transition-colors duration-200">হোম</a>
             <span class="mx-2">/</span>
             <span>ভর্তি</span>
         </div>
@@ -113,7 +113,7 @@
                                 <li class="flex items-center">  মানবিক শাখা</li>
                                 <li class="flex items-center">  ব্যবসায় শিক্ষা শাখা</li>
                             </ul>
-                            <a href="academics/programs.html#hsc" class="text-primary font-medium hover:text-primary-dark">বিস্তারিত দেখুন <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-1 inline"><line x1="5" x2="19" y1="12" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                            <a href="#" class="text-primary font-medium hover:text-primary-dark">বিস্তারিত দেখুন <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-1 inline"><line x1="5" x2="19" y1="12" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
                         </div>
                         
                         <!-- Degree Program -->
@@ -128,7 +128,7 @@
                                 <li class="flex items-center">  বি.এসসি (পাস) কোর্স</li>
                                 <li class="flex items-center">  বি.বি.এস (পাস) কোর্স</li>
                             </ul>
-                            <a href="academics/programs.html#degree" class="text-primary font-medium hover:text-primary-dark">বিস্তারিত দেখুন <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-1 inline"><line x1="5" x2="19" y1="12" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                            <a href="#" class="text-primary font-medium hover:text-primary-dark">বিস্তারিত দেখুন <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-1 inline"><line x1="5" x2="19" y1="12" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
                         </div>
                         
                         <!-- Honors Program -->
@@ -193,7 +193,7 @@
                         <div class="bg-white rounded-lg p-6 border border-gray-200">
                             <h3 class="text-xl font-semibold mb-4 flex items-center">
                                 <span class="bg-green-100 text-green-600 w-8 h-8 rounded-full flex items-center justify-center mr-3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-check"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg></span>
-                                স্নাতক (পাস) প্রোগ্রাম
+                                ডিগ্রি (পাস) প্রোগ্রাম
                             </h3>
                             <p class="mb-4">ডিগ্রি পাস কোর্সে ভর্তির জন্য নিম্নলিখিত যোগ্যতা থাকতে হবে:</p>
                             <ul class="space-y-2 list-disc ml-6">
@@ -407,7 +407,7 @@
                         <td class="py-3 px-4">১,০০০ টাকা</td>
                     </tr>
                     <tr class="border-b border-gray-200 bg-gray-50">
-                        <td class="py-3 px-4 font-medium">স্নাতক (পাস) কোর্স</td>
+                        <td class="py-3 px-4 font-medium">ডিগ্রি কোর্স</td>
                         <td class="py-3 px-4">৮০০ টাকা</td>
                         <td class="py-3 px-4">৮,০০০ টাকা</td>
                         <td class="py-3 px-4">৬,৫০০ টাকা (সেমিস্টার)</td>
@@ -419,13 +419,6 @@
                         <td class="py-3 px-4">১০,০০০ টাকা</td>
                         <td class="py-3 px-4">৮,০০০ টাকা (সেমিস্টার)</td>
                         <td class="py-3 px-4">২,৫০০ টাকা (ল্যাব ফি)</td>
-                    </tr>
-                    <tr class="border-b border-gray-200 bg-gray-50">
-                        <td class="py-3 px-4 font-medium">স্নাতক (সম্মান) - কলা ও সামাজিক বিজ্ঞান</td>
-                        <td class="py-3 px-4">১,০০০ টাকা</td>
-                        <td class="py-3 px-4">৯,০০০ টাকা</td>
-                        <td class="py-3 px-4">৭,৫০০ টাকা (সেমিস্টার)</td>
-                        <td class="py-3 px-4">১,৫০০ টাকা</td>
                     </tr>
                     <tr class="border-b border-gray-200">
                         <td class="py-3 px-4 font-medium">স্নাতকোত্তর</td>
@@ -486,17 +479,7 @@
                             <p class="text-gray-600">৩০ জুন, ২০২৫</p>
                         </div>
                     </li>
-                    <li class="flex">
-                        <div class="mr-4">
-                            <div class="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold">ভর্তি পরীক্ষা</h4>
-                            <p class="text-gray-600">১০ জুলাই, ২০২৫</p>
-                        </div>
-                    </li>
+                    
                     <li class="flex">
                         <div class="mr-4">
                             <div class="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
@@ -608,7 +591,7 @@
         </div>
         
         <div class="mt-6 p-4 bg-primary/5 border border-primary/20 rounded-lg text-center">
-            <p class="text-gray-700"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-circle text-primary mr-2 inline"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg> উপরোক্ত তারিখগুলি অনিবার্য কারণে পরিবর্তন হতে পারে। সরবশেষ আপডেট জানতে <a href="notice.html" class="text-primary hover:underline">নোটিশ বোর্ড</a> দেখুন।</p>
+            <p class="text-gray-700"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-circle text-primary mr-2 inline"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg> উপরোক্ত তারিখগুলি অনিবার্য কারণে পরিবর্তন হতে পারে। সরবশেষ আপডেট জানতে <a href="{% url "core:notices" %}" class="text-primary hover:underline">নোটিশ বোর্ড</a> দেখুন।</p>
         </div>
     </div>
 </div>
