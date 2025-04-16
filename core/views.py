@@ -98,6 +98,7 @@ class NoticeListView(ListView):
         context = super().get_context_data(**kwargs)
         context['featured_notice'] = Notice.objects.filter(is_important=True).order_by('-publish_date').first()
         context['categories'] = Notice.CATEGORY_CHOICES
+        context['path'] = '/notices'
         return context
 
 class NoticeDetailView(DetailView):

@@ -14,17 +14,19 @@
             
             <nav class="hidden lg:block">
                 <ul class="flex space-x-6">
-                    <li><a href="{% url 'core:home' %}" class="nav-link-active">হোম</a></li>
+                    <li><a href="{% url 'core:home' %}" class="{% if request.path == '/' %}nav-link-active{% else %}nav-link{% endif %}">হোম</a></li>
                     <li class="relative group">
+                        
                         <a href="#" class="nav-link">আমাদের সম্পর্কে <span class="inline-block transition-transform duration-200 group-hover:rotate-180"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg></span></a>
-                        <ul class="hidden group-hover:block absolute left-0 top-full w-48 bg-white border border-gray-100 py-2 z-50">
-                            <li><a href="{% url "core:history" %}" class="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200">কলেজের ইতিহাস</a></li>
-                            <li><a href="{% url "core:faculty" %}" class="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200">শিক্ষক-শিক্ষিকা</a></li>
-                            <li><a href="{% url "core:campus" %}" class="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200">ক্যাম্পাস</a></li>
+                        <ul class="hidden group-hover:block absolute left-0 top-full w-48 bg-white border border-gray-300 rounded py-2 z-50">
+                            <li><a href="{% url 'core:history' %}" class="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200">কলেজের ইতিহাস</a></li>
+                            <li><a href="{% url 'core:faculty' %}" class="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200">শিক্ষক-শিক্ষিকা</a></li>
+                            <li><a href="{% url 'core:campus' %}" class="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200">ক্যাম্পাস</a></li>
                         </ul>
+                        
                     </li>
                     <li class="relative group">
-                        <a href="#" class="nav-link">একাডেমিক <span class="inline-block transition-transform duration-200 group-hover:rotate-180"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg></span></a>
+                        <a href="#" class="nav-link">একাডেমিক<span class="inline-block transition-transform duration-200 group-hover:rotate-180"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg></span></a>
                         <ul class="hidden group-hover:block absolute left-0 top-full w-48 bg-white border border-gray-100 py-2 z-50">
                             <li><a href="{% url "core:admission" %}" class="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200">প্রোগ্রামসমূহ</a></li>
                             <li><a href="{% url "core:departments" %}" class="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200">বিভাগসমূহ</a></li>
@@ -38,7 +40,7 @@
                         <a href="#" class="nav-link">আরও <span class="inline-block transition-transform duration-200 group-hover:rotate-180"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg></span></a>
                         <ul class="hidden group-hover:block absolute right-0 top-full w-48 bg-white border border-gray-100 py-2 z-50">
                             <li><a href="{% url "core:result" %}" class="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200">রেজাল্ট </a></li>
-                            <li><a href="{% url "core:notices" %}" class="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200">রুটিন </a></li>
+                            <li><a href="{% url "core:notices" %}?category=routin" class="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200">রুটিন </a></li>
                             <li><a href="{% url "core:gallery" %}" class="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200">গ্যালারি</a></li>
                         </ul>
                     </li>
@@ -54,7 +56,7 @@
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="lg:hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out ">
             <ul class="space-y-1 my-8">
-                <li><a href="{% url 'core:home' %}" class="nav-link-active">হোম</a></li>
+                <li><a href="{% url 'core:home' %}" class="nav-link">হোম</a></li>
                 <li class="mobile-dropdown">
                     <button class="flex justify-between items-center w-full py-2 text-gray-700">
                         আমাদের সম্পর্কে
@@ -63,7 +65,7 @@
                     <ul class="max-h-0 overflow-hidden pl-4 py-0 space-y-2 border-l-2 border-green-500 transition-all duration-300 ease-in-out">
                         <li><a href="{% url 'core:history' %}" class="nav-link">কলেজের ইতিহাস</a></li>
                         <li><a href="{% url 'core:faculty' %}" class="nav-link">শিক্ষক-শিক্ষিকা</a></li>
-                        <li><a href="{% url 'core:faculty' %}" class="nav-link">ক্যাম্পাস</a></li>
+                        <li><a href="{% url 'core:campus' %}" class="nav-link">ক্যাম্পাস</a></li>
                     </ul>
                 </li>
                 <li class="mobile-dropdown">

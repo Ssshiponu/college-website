@@ -15,8 +15,10 @@ class Department(models.Model):
     established = models.DateField()
     slug = models.SlugField(unique=True, blank=True)
     
-    def __str__(self):
-        return self.name
+    def save(self, *args, **kwargs):
+        if self.slug == "":
+            self.slug = get_random_string(length=16)
+        super().save(*args, **kwargs)
 
 class Faculty(models.Model):
     DESIGNATION_CHOICES = [
@@ -45,6 +47,11 @@ class Faculty(models.Model):
     class Meta:
         verbose_name_plural = "Faculty Members"
     
+    def save(self, *args, **kwargs):
+        if self.slug == "":
+            self.slug = get_random_string(length=16)
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return f"{self.name}"
 
@@ -72,6 +79,11 @@ class Notice(models.Model):
             return True
         return False
     
+    def save(self, *args, **kwargs):
+        if self.slug == "":
+            self.slug = get_random_string(length=16)
+        super().save(*args, **kwargs)
+
     class Meta:
         ordering = ['-publish_date']
 
@@ -98,7 +110,7 @@ class Program(models.Model):
 class Event(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    date = models.DateTimeField()
+    date = models.DateField()
     time = models.TimeField(null=True, blank=True)
     location = models.CharField(max_length=100)
     image = models.ImageField(upload_to='events/', null=True, blank=True)
@@ -107,6 +119,11 @@ class Event(models.Model):
     
     class Meta:
         ordering = ['-date']
+
+    def save(self, *args, **kwargs):
+        if self.slug == "":
+            self.slug = get_random_string(length=16)
+        super().save(*args, **kwargs)
     
     def __str__(self):
         return self.title
