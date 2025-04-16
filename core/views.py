@@ -87,6 +87,7 @@ class NoticeListView(ListView):
         queryset = super().get_queryset()
         category = self.request.GET.get('category')
         search = self.request.GET.get('search')
+        
         if category:
             queryset = queryset.filter(category=category)
         if search:
@@ -96,12 +97,14 @@ class NoticeListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['featured_notice'] = Notice.objects.filter(is_important=True).order_by('-publish_date').first()
+        context['categories'] = Notice.CATEGORY_CHOICES
         return context
 
 class NoticeDetailView(DetailView):
     model = Notice
     template_name = 'notice_detail.html'
     context_object_name = 'notice'
+
 
 class ProgramListView(ListView):
     model = Program

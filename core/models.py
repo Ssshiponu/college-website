@@ -20,13 +20,13 @@ class Department(models.Model):
 
 class Faculty(models.Model):
     DESIGNATION_CHOICES = [
-        ('principal', 'Principal'),
-        ('vice_principal', 'Vice Principal'),
-        ('professor', 'Professor'),
-        ('associate_professor', 'Associate Professor'),
-        ('assistant_professor', 'Assistant Professor'),
-        ('lecturer', 'Lecturer'),
-        ('staff', 'Staff'),
+        ('Principal', 'Principal'),
+        ('Vice Principal', 'Vice Principal'),
+        ('Professor', 'Professor'),
+        ('Associate Professor', 'Associate Professor'),
+        ('Assistant Professor', 'Assistant Professor'),
+        ('Lecturer', 'Lecturer'),
+        ('Staff', 'Staff'),
     ]
 
     name = models.CharField(max_length=100)
@@ -46,7 +46,7 @@ class Faculty(models.Model):
         verbose_name_plural = "Faculty Members"
     
     def __str__(self):
-        return f"{self.name} - {self.get_designation_display()}"
+        return f"{self.name}"
 
 class Notice(models.Model):
     CATEGORY_CHOICES = [
@@ -65,6 +65,12 @@ class Notice(models.Model):
     is_important = models.BooleanField(default=False)
     slug = models.SlugField(unique=True)
 
+    @property
+    def is_image(self):
+        if self.document.url.endswith("jpg"):
+            return True
+        return False
+    
     class Meta:
         ordering = ['-publish_date']
 
@@ -109,7 +115,6 @@ class Gallery(models.Model):
         ('campus', 'Campus'),
         ('event', 'Event'),
         ('student', 'Student Activities'),
-        ('faculty', 'Faculty'),
         ('other', 'Other'),
     ]
 

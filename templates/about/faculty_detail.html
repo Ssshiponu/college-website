@@ -4,13 +4,13 @@
 {% block content %}
 <div class="bg-gradient-to-r from-primary to-primary-dark text-white py-12">
     <div class="container mx-auto px-4">
-        <h1 class="text-3xl font-bold mb-2">শিক্ষক-শিক্ষিকা বিস্তারিত</h1>
+        <h1 class="text-3xl font-bold mb-2">{{ faculty.name }}</h1>
         <div class="flex items-center">
-            <a href="../../index.html" class="hover:text-primary-light transition-colors duration-200">হোম</a>
+            <a href="{% url 'core:home' %}" class="hover:text-primary-light transition-colors duration-200">হোম</a>
             <span class="mx-2">/</span>
-            <a href="faculty.html" class="hover:text-primary-light transition-colors duration-200">শিক্ষক-শিক্ষিকা</a>
+            <a href="{% url 'core:faculty' %}" class="hover:text-primary-light transition-colors duration-200">শিক্ষক-শিক্ষিকা</a>
             <span class="mx-2">/</span>
-            <span>বিস্তারিত</span>
+            <span class="font-semibold">{{ faculty.name }}</span>
         </div>
     </div>
 </div>

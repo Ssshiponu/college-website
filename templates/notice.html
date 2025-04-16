@@ -22,43 +22,34 @@
                 <div class="bg-gray-50 border border-gray-200 rounded p-6 sticky top-24">
                     <h3 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-200">নোটিশ বিভাগসমূহ</h3>
                     <div class="mb-6">
-                        <ul class="space-y-2">
+                        <div class="block lg:hidden mb-4">
+                            <select class="w-full px-3 py-2 border border-gray-300 bg-white rounded focus:outline-none" onchange="location = this.value;">
+                                <option value="?category=" {% if not request.GET.category %}selected{% endif %}>সকল নোটিশ</option>
+                                {% for category in categories  %}
+                                <option value="?category={{ category.0 }}" {% if request.GET.category == category.0 %}selected{% endif %}>{{ category.1 }}</option>
+                                {% endfor %}                                
+                            </select>
+                        </div>
+                        <ul class="hidden lg:block space-y-2">
+                            
                             <li>
                                 <a href="?category=" class="{% if not request.GET.category %}text-primary font-medium{% else %}text-gray-700{% endif %} flex items-center">
                                     সকল নোটিশ
                                 </a>
                             </li>
+                            {% for category in categories  %}
                             <li>
-                                <a href="?category=admission" class="{% if request.GET.category == 'admission' %}text-primary font-medium{% else %}text-gray-700{% endif %} flex items-center">
-                                    ভর্তি
+                                <a href="?category={{ category.0 }}" class="{% if request.GET.category == category.0 %}text-primary font-medium{% else %}text-gray-700{% endif %} flex items-center">
+                                    {{ category.1 }}
                                 </a>
                             </li>
-                            <li>
-                                <a href="?category=examination" class="{% if request.GET.category == 'examination' %}text-primary font-medium{% else %}text-gray-700{% endif %} flex items-center">
-                                    পরীক্ষা
-                                </a>
-                            </li>
-                            <li>
-                                <a href="?category=event" class="{% if request.GET.category == 'event' %}text-primary font-medium{% else %}text-gray-700{% endif %} flex items-center">
-                                    অনুষ্ঠান
-                                </a>
-                            </li>
-                            <li>
-                                <a href="?category=academic" class="{% if request.GET.category == 'academic' %}text-primary font-medium{% else %}text-gray-700{% endif %} flex items-center">
-                                    একাডেমিক
-                                </a>
-                            </li>
-                            <li>
-                                <a href="?category=other" class="{% if request.GET.category == 'other' %}text-primary font-medium{% else %}text-gray-700{% endif %} flex items-center">
-                                    অন্যান্য
-                                </a>
-                            </li>
+                            {% endfor %}
                         </ul>
                     </div>
                     
                     <h3 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-200">নোটিশ খুঁজুন</h3>
                     <div class="mb-4">
-                        <form method="get" action="">
+                        <form method="get">
                             <div class="flex">
                                 <input type="text" name="search" placeholder="কীওয়ার্ড দিয়ে খুঁজুন" class="w-full px-3 py-2 border border-gray-300 rounded-l focus:outline-none" value="{{ request.GET.search }}">
                                 <button class="bg-primary text-white px-3 py-2 rounded-r">

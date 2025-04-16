@@ -20,13 +20,7 @@
             <!-- Notice Header -->
             <div class="mb-6">
                 <div class="flex items-center justify-between flex-wrap gap-4">
-                    <div class="flex items-center gap-3">
-                        <span class="{{ notice.category_color }} text-xs px-2 py-1 rounded">{{ notice.get_category_display }}</span>
-                        {% if notice.is_important %}
-                        <span class="bg-primary text-white text-xs px-2 py-1 rounded">প্রধান</span>
-                        {% endif %}
-                    </div>
-                    <span class="text-gray-500 text-sm">{{ notice.publish_date|date:"d F, Y" }}</span>
+                    <span class="text-gray-500 text-sm">{{ notice.publish_date|date:"d F, Y" }} | {{notice.category}}</span>
                 </div>
             </div>
 
@@ -42,7 +36,7 @@
                 
                 <div class="mt-6">
                     <h3 class="text-lg font-semibold mb-2 text-gray-800">সংযুক্ত নথি</h3>
-                    {% if notice.document.url|endswith(".jpg") %}
+                    {% if notice.is_image %}
                     
                     <!-- Preview Image -->
                     <div class="border border-gray-200 rounded-lg overflow-hidden">
@@ -75,6 +69,39 @@
                     সকল নোটিশে ফিরে যান
                 </a>
             </div>
+
+            <!-- Share this Notice -->
+            <!-- Social Share -->
+            <div class="mt-8 pt-6 border-t">
+                <div class="flex flex-wrap items-center justify-between">
+                    <p class="text-gray-700 font-medium mb-3 md:mb-0 text-xl">Share this notice:</p>
+                    <div class="flex space-x-3">
+                        <a href="https://www.facebook.com/share.php?u={{ notice.get_absolute_url }}" target="_blank" class="bg-primary/10 text-primary hover:bg-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+
+                        <button onclick="navigator.clipboard.writeText('{{ request.build_absolute_uri }}');alert('Link copied to clipboard!');" class="bg-primary/10 text-primary hover:bg-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Notice Subscription Section -->
+<section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="bg-white border border-gray-200 rounded p-8 max-w-3xl mx-auto">
+            <div class="text-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">নোটিশ সাবস্ক্রাইব করুন</h2>
+                <p class="text-gray-600">সর্বশেষ নোটিশ ও বিজ্ঞপ্তি আপনার ইমেইলে পান</p>
+            </div>
+            <form class="flex flex-col md:flex-row gap-4">
+                <input type="email" placeholder="আপনার ইমেইল ঠিকানা লিখুন" class="flex-grow px-4 py-2 border border-gray-300 rounded focus:outline-none" required>
+                <button type="submit" class="bg-primary text-white px-6 py-2 rounded">সাবস্ক্রাইব</button>
+            </form>
+            <p class="text-gray-500 text-sm mt-4 text-center">আপনি যেকোনো সময় আনসাবস্ক্রাইব করতে পারেন। আমরা আপনার গোপনীয়তা সম্মান করি।</p>
         </div>
     </div>
 </section>
