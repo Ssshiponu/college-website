@@ -131,3 +131,15 @@ class Gallery(models.Model):
     def __str__(self):
         return self.title
 
+class Faq(models.Model):
+    FAQ_PAGES = [
+        ('Admission', 'Admission'),
+        ('Contact', 'Contact'),
+        ('Notice', 'Notice'),
+    ]
+    question = models.CharField(max_length=200)
+    ans = models.TextField()
+    page = models.CharField(choices=FAQ_PAGES)
+
+    def __str__(self):
+        return self.question

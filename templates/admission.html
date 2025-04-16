@@ -619,10 +619,17 @@
         <h2 class="text-2xl font-semibold mb-6 pb-2 border-b border-gray-200">সাধারণ প্রশ্নোত্তর (FAQ)</h2>
         
         <div class="space-y-4">
-            {% include "components/faq.html" with question='কলেজে ভর্তির জন্য কি ভর্তি পরীক্ষা দিতে হবে?' answer='হ্যাঁ, উচ্চ মাধ্যমিক ও স্নাতক (সম্মান) প্রোগ্রামে ভর্তির জন্য ভর্তি পরীক্ষা দিতে হবে। তবে, স্নাতক (পাস) কোর্সে ভর্তির জন্য কেবল মেধা তালিকার ভিত্তিতে শিক্ষার্থী নির্বাচন করা হয়, তাদের ভর্তি পরীক্ষা দিতে হয় না।' %}
-            {% include "components/faq.html" with question='ভর্তি প্রক্রিয়ার স্ট্যাটাস কিভাবে জানব?' answer='ভর্তি প্রক্রিয়ার স্ট্যাটাস জানতে আপনি আমাদের ওয়েবসাইটে আপনার আবেদন আইডি ব্যবহার করে লগইন করতে পারেন। এছাড়াও ভর্তি অফিসে সরাসরি যোগাযোগ করে আপনার আবেদনের অবস্থা সম্পর্কে জানতে পারেন।' %}
-            {% include "components/faq.html" with question='বৃত্তি সুবিধা সম্পর্কে জানতে চাই।' answer='আমাদের কলেজে মেধাবী ও অর্থনৈতিকভাবে অসচ্ছল শিক্ষার্থীদের জন্য বিভিন্ন ধরনের বৃত্তি রয়েছে। এর মধ্যে সরকারি উপবৃত্তি, কলেজ বৃত্তি, ও বিভিন্ন প্রতিষ্ঠানের বৃত্তি অন্তর্ভুক্ত। বিস্তারিত তথ্য পেতে বৃত্তি শাখায় যোগাযোগ করুন অথবা আমাদের ওয়েবসাইটের বৃত্তি সেকশন দেখুন।' %}
-            {% include "components/faq.html" with question='কলেজে হোস্টেল সুবিধা আছে কি?' answer='হ্যাঁ, আমাদের কলেজে ছাত্র ও ছাত্রীদের জন্য পৃথক হোস্টেল রয়েছে। হোস্টেল সিট সীমিত সংখ্যক। হোস্টেলে আবেদন করতে ভর্তির সময় হোস্টেল আবেদন ফরম পূরণ করতে হবে। সিট বরাদ্দ দূরত্ব এবং মেধার ভিত্তিতে করা হয়।' %}
+            {% for faq in faqs %}
+                <div class="border border-gray-200 rounded overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left bg-white flex justify-between items-center">
+                        <span class="font-medium text-gray-800">{{faq.question}}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down text-primary transition-transform duration-300"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300">
+                        <p class="p-6 text-gray-600">{{faq.ans}}</p>
+                    </div>
+                </div>            
+            {% endfor %}
         </div>
     </div>
 </div>

@@ -176,45 +176,17 @@
         </div>
         
         <div class="max-w-3xl mx-auto space-y-4">
+            {% for faq in faqs %}
             <div class="border border-gray-200 rounded overflow-hidden">
                 <button class="faq-question w-full px-6 py-4 text-left bg-white flex justify-between items-center">
-                    <span class="font-medium text-gray-800">অফিসের কাজের সময় কি?</span>
-                    <i class="fas fa-chevron-down text-gray-500 transition-transform"></i>
+                    <span class="font-medium text-gray-800">{{faq.question}}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down text-primary transition-transform duration-300"><polyline points="6 9 12 15 18 9"/></svg>
                 </button>
-                <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
-                    <p class="p-6 text-gray-600">আমাদের অফিস রবিবার থেকে বৃহস্পতিবার সকাল ৯টা থেকে বিকাল ৫টা পর্যন্ত খোলা থাকে। শুক্রবার এবং শনিবার সাপ্তাহিক ছুটি। সরকারি ছুটির দিনে অফিস বন্ধ থাকে।</p>
+                <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300">
+                    <p class="p-6 text-gray-600">{{faq.ans}}</p>
                 </div>
-            </div>
-            
-            <div class="border border-gray-200 rounded overflow-hidden">
-                <button class="faq-question w-full px-6 py-4 text-left bg-white flex justify-between items-center">
-                    <span class="font-medium text-gray-800">ট্রান্সক্রিপ্ট এবং সার্টিফিকেট কিভাবে সংগ্রহ করব?</span>
-                    <i class="fas fa-chevron-down text-gray-500 transition-transform"></i>
-                </button>
-                <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
-                    <p class="p-6 text-gray-600">ট্রান্সক্রিপ্ট এবং সার্টিফিকেট সংগ্রহের জন্য আপনাকে একাডেমিক শাখায় আবেদন ফরম পূরণ করতে হবে এবং প্রয়োজনীয় ফি জমা দিতে হবে। আবেদনের ৭-১০ কার্যদিবসের মধ্যে আপনার ডকুমেন্ট প্রস্তুত হবে।</p>
-                </div>
-            </div>
-            
-            <div class="border border-gray-200 rounded overflow-hidden">
-                <button class="faq-question w-full px-6 py-4 text-left bg-white flex justify-between items-center">
-                    <span class="font-medium text-gray-800">ক্যাম্পাস ভ্রমণের ব্যবস্থা আছে কি?</span>
-                    <i class="fas fa-chevron-down text-gray-500 transition-transform"></i>
-                </button>
-                <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
-                    <p class="p-6 text-gray-600">হ্যাঁ, আমরা সাপ্তাহিক ক্যাম্পাস ভ্রমণের ব্যবস্থা করে থাকি। প্রতি বৃহস্পতিবার সকাল ১১টায় ভ্রমণ শুরু হয়। অংশগ্রহণ করতে আপনাকে অবশ্যই ২ দিন আগে রেজিস্ট্রেশন করতে হবে। এজন্য অ্যাডমিশন অফিসে যোগাযোগ করুন।</p>
-                </div>
-            </div>
-            
-            <div class="border border-gray-200 rounded overflow-hidden">
-                <button class="faq-question w-full px-6 py-4 text-left bg-white flex justify-between items-center">
-                    <span class="font-medium text-gray-800">বৃত্তি সম্পর্কিত কিভাবে তথ্য পাব?</span>
-                    <i class="fas fa-chevron-down text-gray-500 transition-transform"></i>
-                </button>
-                <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
-                    <p class="p-6 text-gray-600">বৃত্তি সম্পর্কিত সকল তথ্য কলেজের ওয়েবসাইটের 'বৃত্তি' পেজে পাওয়া যাবে। এছাড়াও, বৃত্তি বিভাগে যোগাযোগ করে বিস্তারিত জানতে পারেন। আমাদের কলেজে মেধাভিত্তিক, উপবৃত্তি, এবং প্রয়োজনভিত্তিক বিভিন্ন বৃত্তি রয়েছে।</p>
-                </div>
-            </div>
+            </div>            
+            {% endfor %}
         </div>
     </div>
 </section>

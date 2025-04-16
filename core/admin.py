@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Department, Faculty, Notice, Program, Event, Gallery
+from .models import Department, Faculty, Notice, Program, Event, Gallery, Faq
 
 @admin.register(Department)
 class DepartmentAdmin(admin.ModelAdmin):
@@ -40,3 +40,7 @@ class GalleryAdmin(admin.ModelAdmin):
     list_display = ('title', 'category', 'upload_date')
     list_filter = ('category', 'upload_date')
     search_fields = ('title', 'description')
+
+@admin.register(Faq)
+class FaqAdmin(admin.ModelAdmin):
+    list_display = ('question', 'ans', 'page')

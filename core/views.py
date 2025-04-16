@@ -1,5 +1,5 @@
 from django.views.generic import ListView, DetailView, TemplateView
-from .models import Department, Faculty, Notice, Program, Event, Gallery
+from .models import Department, Faculty, Notice, Program, Event, Gallery, Faq
 from django.db.models import Q
 
 class HomeView(TemplateView):
@@ -157,6 +157,11 @@ class ResultView(TemplateView):
 class ContactView(TemplateView):
     template_name = 'contact.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['faqs'] = Faq.objects.filter(page='Contact')
+        return context
+
 class CampusView(TemplateView):
     template_name = 'campus.html'
 
@@ -165,5 +170,5 @@ class AdmissionView(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['programs'] = Program.objects.all()[:4]
+        context['faqs'] = Faq.objects.filter(page='Admission')
         return context
