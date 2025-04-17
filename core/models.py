@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 from django.db import models
@@ -55,6 +56,32 @@ class Faculty(models.Model):
         if self.slug == "":
             self.slug = get_random_string(length=16)
         super().save(*args, **kwargs)
+
+        # save a 96px height copy of the image with width auto as per aspect ratio
+        if self.photo:
+            try:
+                from PIL import Image
+                from io import BytesIO
+                from django.core.files.base import ContentFile
+
+                img = Image.open(self.photo)
+                aspect_ratio = img.width / img.height
+                new_width = int(96 * aspect_ratio)
+                img = img.resize((new_width, 96), Image.Resampling.LANCZOS)
+                img_io = BytesIO()
+                img.save(img_io, format='JPEG')
+                img_file = ContentFile(img_io.getvalue(), name=self.photo.name)
+                self.photo.save(f"96_{self.photo.name}", img_file, save=False)
+            except Exception as e:
+                # Log the error or handle it as needed
+                print(f"Error processing image: {e}")
+
+    # get 96 px height image url
+    @property
+    def photo_96(self):
+        if self.photo:
+            return self.photo.url.replace("faculty/", "faculty/96_faculty/")
+        return None
 
     def __str__(self):
         return f"{self.name}"

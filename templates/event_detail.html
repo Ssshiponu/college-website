@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}ধাসক - {{ event.title }}{% endblock %}
+{% block content %}
+<!-- Page Title -->
+<div class="bg-gradient-to-r from-primary to-primary-dark text-white py-12">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold mb-3">{{ event.title }}</h1>
+        <nav class="flex items-center text-sm">
+            <a href="{% url 'core:home' %}">হোম</a>
+            <span class="mx-2">/</span>
+            <a href="{% url 'core:events' %}">ইভেন্টস</a>
+            <span class="mx-2">/</span>
+            <span class="fint-bold">{{ event.title|truncatewords:3 }}</span>
+        </nav>
+    </div>
+</div>
+
+<!-- Event Detail Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+            <div >
+                
+                    <!-- Image Section -->
+                    <div class="relative overflow-hidden">
+                        <img class="w-full rounded-lg" src="{{ event.image.url }}" alt="{{ event.title }}">
+                    </div>
+                    <!-- Content Section -->
+                    <div class="p-6 flex flex-col justify-between">
+                        <div>
+                            <h2 class="text-2xl font-bold text-gray-800 mb-3">{{ event.title }}</h2>
+                            <p class="text-gray-600 mb-4">{{ event.description }}</p>
+                            <div class="space-y-2 text-gray-600 mb-4">
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+                                        <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                    <span>{{ event.location }}</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg class="text-gray-500 mr-2" fill="none" stroke="currentColor" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <span>{{ event.date|date:"d M Y" }} | {{ event.time }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
