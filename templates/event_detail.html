@@ -4,50 +4,56 @@
 <!-- Page Title -->
 <div class="bg-gradient-to-r from-primary to-primary-dark text-white py-12">
     <div class="container mx-auto px-4">
-        <h1 class="text-3xl font-bold mb-3">{{ event.title }}</h1>
-        <nav class="flex items-center text-sm">
-            <a href="{% url 'core:home' %}">হোম</a>
+        <h1 class="text-3xl font-bold mb-2">{{ event.title }}</h1>
+        <div class="flex items-center text">
+            <a href="{% url 'core:home' %}" class="hover:text-primary-light transition-colors duration-200">হোম</a>
             <span class="mx-2">/</span>
-            <a href="{% url 'core:events' %}">ইভেন্টস</a>
+            <a href="{% url 'core:events' %}" class="hover:text-primary-light transition-colors duration-200">ইভেন্টস</a>
             <span class="mx-2">/</span>
-            <span class="fint-bold">{{ event.title|truncatewords:3 }}</span>
-        </nav>
+            <span>{{ event.title|truncatewords:3 }}</span>
+        </div>
     </div>
 </div>
 
 <!-- Event Detail Section -->
-<section class="py-16 bg-gray-50">
+<section class="py-16 bg-white">
     <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
-            <div >
-                
-                    <!-- Image Section -->
-                    <div class="relative overflow-hidden">
-                        <img class="w-full rounded-lg" src="{{ event.image.url }}" alt="{{ event.title }}">
+            <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
+                <!-- Image Section -->
+                <div class="relative overflow-hidden">
+                    <img class="w-full h-96 object-cover" src="{{ event.image.url }}" alt="{{ event.title }}">
+                </div>
+                <!-- Content Section -->
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-3">{{ event.title }}</h2>
+                    <div class="flex items-center mb-4">
+                        <span class="text-gray-500 text-sm">{{ event.date|date:"d F, Y" }}</span>
                     </div>
-                    <!-- Content Section -->
-                    <div class="p-6 flex flex-col justify-between">
-                        <div>
-                            <h2 class="text-2xl font-bold text-gray-800 mb-3">{{ event.title }}</h2>
-                            <p class="text-gray-600 mb-4">{{ event.description }}</p>
-                            <div class="space-y-2 text-gray-600 mb-4">
-                                <div class="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/>
-                                        <circle cx="12" cy="10" r="3"/>
-                                    </svg>
-                                    <span>{{ event.location }}</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <svg class="text-gray-500 mr-2" fill="none" stroke="currentColor" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                    </svg>
-                                    <span>{{ event.date|date:"d M Y" }} | {{ event.time }}</span>
-                                </div>
-                            </div>
+                    <p class="text-gray-600 mb-6">{{ event.description }}</p>
+                    <div class="space-y-3 text-gray-600 mb-6">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-primary">
+                                <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <span>{{ event.location }}</span>
+                        </div>
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-primary">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            <span>{{ event.date|date:"d F, Y" }} | {{ event.time }}</span>
                         </div>
                     </div>
-                
+                    <a href="{% url 'core:events' %}" class="text-primary flex items-center group hover:text-primary-dark transition-colors duration-200">
+                        সকল ইভেন্ট দেখুন
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left ml-2 group-hover:-translate-x-1 transition-transform duration-200"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

@@ -57,7 +57,7 @@ class Faculty(models.Model):
             self.slug = get_random_string(length=16)
         super().save(*args, **kwargs)
 
-        # save a 96px height copy of the image with width auto as per aspect ratio
+        # save a 96px width copy of the image with width auto as per aspect ratio
         if self.photo:
             try:
                 from PIL import Image
@@ -65,9 +65,9 @@ class Faculty(models.Model):
                 from django.core.files.base import ContentFile
 
                 img = Image.open(self.photo)
-                aspect_ratio = img.width / img.height
-                new_width = int(96 * aspect_ratio)
-                img = img.resize((new_width, 96), Image.Resampling.LANCZOS)
+                aspect_ratio =img.height / img.width 
+                new_height = int(96 * aspect_ratio)
+                img = img.resize((96, new_height), Image.Resampling.LANCZOS)
                 img_io = BytesIO()
                 img.save(img_io, format='JPEG')
                 img_file = ContentFile(img_io.getvalue(), name=self.photo.name)

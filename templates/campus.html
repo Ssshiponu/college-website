@@ -1,5 +1,108 @@
 {% extends "base.html" %}
-{% block title %}ধাসক - ক্যাম্পাস{% endblock title %}
+{% load static %}
+{% block title %}ধাসক - ক্যাম্পাস{% endblock %}
 {% block content %}
-{% include "components/later.html" %}
-{% endblock content %}
+<!-- Page Title -->
+<div class="bg-gradient-to-r from-primary to-primary-dark text-white py-12">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold mb-2">ক্যাম্পাস</h1>
+        <div class="flex items-center text">
+            <a href="{% url 'core:home' %}" class="hover:text-primary-light transition-colors duration-200">হোম</a>
+            <span class="mx-2">/</span>
+            <span>ক্যাম্পাস</span>
+        </div>
+    </div>
+</div>
+
+<!-- Campus Overview Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">আমাদের ক্যাম্পাস</h2>
+            <p class="text-gray-600">ধামরাই সরকারি কলেজের প্রাণবন্ত ক্যাম্পাসে স্বাগতম</p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div>
+                <img class="w-full h-96 object-cover rounded-lg border border-gray-200" src="{% static 'images/campus.jpg' %}" alt="ধামরাই সরকারি কলেজ ক্যাম্পাস">
+            </div>
+            <div class="flex flex-col justify-center">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">ক্যাম্পাস সম্পর্কে</h3>
+                <p class="text-gray-600 mb-4">ধামরাই সরকারি কলেজ, ঢাকা-১৩৫০ এ অবস্থিত, একটি শান্ত ও শিক্ষাবান্ধব পরিবেশে অবস্থিত। আমাদের ক্যাম্পাসে আধুনিক শ্রেণিকক্ষ, লাইব্রেরি, ল্যাবরেটরি, এবং খেলার মাঠ রয়েছে, যা শিক্ষার্থীদের একাডেমিক ও সহ-পাঠক্রমিক উন্নয়নে সহায়তা করে।</p>
+                <a href="{% url 'core:history' %}" class="text-primary flex items-center group hover:text-primary-dark transition-colors duration-200">
+                    আরও জানুন
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-200"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Facilities Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">ক্যাম্পাস সুবিধাসমূহ</h2>
+            <p class="text-gray-600">আমাদের শিক্ষার্থীদের জন্য আধুনিক সুবিধা</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white border border-gray-200 rounded p-6 text-center hover:shadow-lg transition-shadow duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-primary">
+                    <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+                <h3 class="text-lg font-semibold mb-2">আধুনিক শ্রেণিকক্ষ</h3>
+                <p class="text-gray-600">স্মার্ট বোর্ড এবং আরামদায়ক আসবাবপত্র সহ শ্রেণিকক্ষ।</p>
+            </div>
+            <div class="bg-white border border-gray-200 rounded p-6 text-center hover:shadow-lg transition-shadow duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-primary">
+                    <circle cx="12" cy="10" r="1"/><path d="M22 20V8h-4l-6-4-6 4H2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2"/><path d="M6 17v.01"/><path d="M6 13v.01"/><path d="M18 17v.01"/><path d="M18 13v.01"/><path d="M14 22v-5a2 2 0 0 0-2-2a2 2 0 0 0-2 2v5"/></svg>
+                <h3 class="text-lg font-semibold mb-2">লাইব্রেরি</h3>
+                <p class="text-gray-600">বিস্তৃত বই ও ডিজিটাল রিসোর্স সংগ্রহ।</p>
+            </div>
+            <div class="bg-white border border-gray-200 rounded p-6 text-center hover:shadow-lg transition-shadow duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-primary">
+                    <path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg>
+                <h3 class="text-lg font-semibold mb-2">ল্যাব</h3>
+                <p class="text-gray-600">বিজ্ঞান ও কম্পিউটার ল্যাব আধুনিক সরঞ্জাম সহ।</p>
+            </div>
+            <div class="bg-white border border-gray-200 rounded p-6 text-center hover:shadow-lg transition-shadow duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-primary">
+                    <path d="m12 8 6-3-6-3v10"/><path d="m8 11.99-5.5 3.14a1 1 0 0 0 0 1.74l8.5 4.86a2 2 0 0 0 2 0l8.5-4.86a1 1 0 0 0 0-1.74L16 12"/><path d="m6.49 12.85 11.02 6.3"/><path d="M17.51 12.85 6.5 19.15"/></svg>
+                <h3 class="text-lg font-semibold mb-2">খেলার মাঠ</h3>
+                <p class="text-gray-600">ক্রীড়া ও বিনোদনের জন্য প্রশস্ত মাঠ।</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Campus Gallery Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">ক্যাম্পাস গ্যালারি</h2>
+            <p class="text-gray-600">আমাদের ক্যাম্পাসের সৌন্দর্য ও কার্যক্রমের ঝলক</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for image in gallery_images %}
+            <div class="bg-white border border-gray-200 rounded overflow-hidden hover:shadow-lg transition-shadow duration-200">
+                <img class="w-full h-64 object-cover" src="{{ image.url }}" alt="ক্যাম্পাস ছবি">
+                <div class="p-4">
+                    <p class="text-gray-600">{{ image.caption }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-gray-600 col-span-3 text-center">কোনো ছবি পাওয়া যায়নি।</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="bg-white border border-gray-200 rounded p-8 max-w-3xl mx-auto text-center">
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">ক্যাম্পাস ভিজিট করুন</h2>
+            <p class="text-gray-600 mb-6">আমাদের ক্যাম্পাসের পরিবেশ সরাসরি উপভোগ করতে আজই ভিজিটের সময় নির্ধারণ করুন।</p>
+            <a href="{% url 'core:contact' %}" class="bg-primary text-white px-6 py-2 rounded font-medium hover:bg-primary-dark transition-colors duration-200">যোগাযোগ করুন</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

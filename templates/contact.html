@@ -1,35 +1,45 @@
 {% extends "base.html" %}
-{% block title %}ধাসক - যোগাযোগ{% endblock title %}
+{% block title %}ধাসক - যোগাযোগ{% endblock %}
 {% block content %}
+<!-- Page Title -->
+<div class="bg-gradient-to-r from-primary to-primary-dark text-white py-12">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold mb-2">যোগাযোগ</h1>
+        <div class="flex items-center text">
+            <a href="{% url 'core:home' %}" class="hover:text-primary-light transition-colors duration-200">হোম</a>
+            <span class="mx-2">/</span>
+            <span>যোগাযোগ</span>
+        </div>
+    </div>
+</div>
+
 <!-- Contact Information Section -->
-<section class="py-12 bg-white">
+<section class="py-16 bg-white">
     <div class="container mx-auto px-4">
         <div class="text-center mb-10">
             <h2 class="text-3xl font-bold text-gray-800 mb-2">যোগাযোগের তথ্য</h2>
             <p class="text-gray-600">আমাদের সাথে যোগাযোগের বিভিন্ন উপায়</p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-8">
-            <div class="text-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-gray-50 border border-gray-200 rounded p-6 text-center">
                 <h3 class="text-xl font-semibold mb-2">ঠিকানা</h3>
                 <p class="text-gray-600">ধামরাই সরকারি কলেজ, ধামরাই, ঢাকা-১৩৫০, বাংলাদেশ</p>
             </div>
             
-            <div class="text-center">
-                
+            <div class="bg-gray-50 border border-gray-200 rounded p-6 text-center">
                 <h3 class="text-xl font-semibold mb-2">ফোন</h3>
                 <p class="text-gray-600">+৮৮০১২৩৪৫৬৭</p>
                 <p class="text-gray-600">+৮৮০৭৬৫৪৩২১</p>
             </div>
             
-            <div class="text-center">
+            <div class="bg-gray-50 border border-gray-200 rounded p-6 text-center">
                 <h3 class="text-xl font-semibold mb-2">ইমেইল</h3>
-                <p class="text-gray-600">info@dhamr...ege.edu.bd</p>
-                <p class="text-gray-600">principal@dham...ege.edu.bd</p>
+                <p class="text-gray-600">info@dha...ge.edu.bd</p>
+                <p class="text-gray-600">principal@dha...ge.edu.bd</p>
             </div>
             
-            <div class="text-center">
-                
+            <div class="bg-gray-50 border border-gray-200 rounded p-6 text-center">
                 <h3 class="text-xl font-semibold mb-2">অফিস সময়</h3>
                 <p class="text-gray-600">রবিবার - বৃহস্পতিবার: সকাল ৯টা - বিকাল ৫টা</p>
                 <p class="text-gray-600">শুক্রবার - শনিবার: বন্ধ</p>
@@ -39,19 +49,19 @@
 </section>
 
 <!-- Map & Contact Form Section -->
-<section class="py-12 bg-gray-50">
+<section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div>
                 <h2 class="text-2xl font-bold text-gray-800 mb-6">আমাদের অবস্থান</h2>
-                <div class="rounded overflow-hidden h-[400px]">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1908.0448604337957!2d90.21761683195854!3d23.913120806663333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sbn!2sbd!4v1744824416301!5m2!1sbn!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="rounded overflow-hidden h-[400px] border border-gray-200">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1908.0448604337957!2d90.21761683195854!3d23.913120806663333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sbn!2sbd!4v1744824416301!5m2!1sbn!2sbd" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
             
             <div>
                 <h2 class="text-2xl font-bold text-gray-800 mb-6">আমাদের লিখুন</h2>
-                <form id="contactForm" class="space-y-4">
+                <form id="contactForm" class="space-y-4 bg-white border border-gray-200 rounded p-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label for="name" class="block text-gray-700 mb-1">নাম *</label>
@@ -94,11 +104,11 @@
                     
                     <div class="flex items-start">
                         <input type="checkbox" id="terms" name="terms" class="mt-1 mr-2" required>
-                        <label for="terms" class="text-gray-700">আমি <a href="#" class="text-primary">গোপনীয়তা নীতি</a> এবং <a href="#" class="text-primary">ব্যবহারের শর্তাবলী</a> মেনে নিচ্ছি *</label>
+                        <label for="terms" class="text-gray-700">আমি <a href="#" class="text-primary hover:text-primary-dark">গোপনীয়তা নীতি</a> এবং <a href="#" class="text-primary hover:text-primary-dark">ব্যবহারের শর্তাবলী</a> মেনে নিচ্ছি *</label>
                     </div>
                     
                     <div>
-                        <button type="submit" class="bg-primary text-white px-6 py-2 rounded font-medium">বার্তা পাঠান</button>
+                        <button type="submit" class="bg-primary text-white px-6 py-2 rounded font-medium hover:bg-primary-dark transition-colors duration-200">বার্তা পাঠান</button>
                     </div>
                 </form>
             </div>
@@ -107,7 +117,7 @@
 </section>
 
 <!-- Department Contact Information -->
-<section class="py-12 bg-white">
+<section class="py-16 bg-white">
     <div class="container mx-auto px-4">
         <div class="text-center mb-10">
             <h2 class="text-3xl font-bold text-gray-800 mb-2">বিভাগীয় যোগাযোগ</h2>
@@ -115,47 +125,47 @@
         </div>
         
         <div class="overflow-x-auto">
-            <table class="min-w-full bg-white">
-                <thead class="bg-gray-100">
+            <table class="min-w-full bg-white border border-gray-200 rounded">
+                <thead class="bg-gray-50">
                     <tr>
-                        <th class="py-3 px-4 text-left font-semibold">বিভাগ</th>
-                        <th class="py-3 px-4 text-left font-semibold">যোগাযোগকারী ব্যক্তি</th>
-                        <th class="py-3 px-4 text-left font-semibold">ফোন</th>
-                        <th class="py-3 px-4 text-left font-semibold">ইমেইল</th>
+                        <th class="py-3 px-4 text-left font-semibold text-gray-700">বিভাগ</th>
+                        <th class="py-3 px-4 text-left font-semibold text-gray-700">যোগাযোগকারী ব্যক্তি</th>
+                        <th class="py-3 px-4 text-left font-semibold text-gray-700">ফোন</th>
+                        <th class="py-3 px-4 text-left font-semibold text-gray-700">ইমেইল</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
-                    <tr>
+                    <tr class="hover:bg-gray-50">
                         <td class="py-3 px-4">অধ্যক্ষের অফিস</td>
                         <td class="py-3 px-4">সেলিম মিয়া</td>
                         <td class="py-3 px-4">+৮৮০-১৭১২-৩৪৫৬৭৮</td>
                         <td class="py-3 px-4">principal@dhamraigovtcollege.edu.bd</td>
                     </tr>
-                    <tr>
+                    <tr class="hover:bg-gray-50">
                         <td class="py-3 px-4">ভর্তি অফিস</td>
                         <td class="py-3 px-4">কামাল আহমেদ</td>
                         <td class="py-3 px-4">+৮৮০-১৮১২-৩৪৫৬৭৮</td>
                         <td class="py-3 px-4">admission@dhamraigovtcollege.edu.bd</td>
                     </tr>
-                    <tr>
+                    <tr class="hover:bg-gray-50">
                         <td class="py-3 px-4">হিসাব বিভাগ</td>
                         <td class="py-3 px-4">নাজমুল হক</td>
                         <td class="py-3 px-4">+৮৮০-১৯১২-৩৪৫৬৭৮</td>
                         <td class="py-3 px-4">accounts@dhamraigovtcollege.edu.bd</td>
                     </tr>
-                    <tr>
+                    <tr class="hover:bg-gray-50">
                         <td class="py-3 px-4">লাইব্রেরি</td>
                         <td class="py-3 px-4">সালমা বেগম</td>
                         <td class="py-3 px-4">+৮৮০-১৬১২-৩৪৫৬৭৮</td>
                         <td class="py-3 px-4">library@dhamraigovtcollege.edu.bd</td>
                     </tr>
-                    <tr>
+                    <tr class="hover:bg-gray-50">
                         <td class="py-3 px-4">পরীক্ষা নিয়ন্ত্রক</td>
                         <td class="py-3 px-4">রহিম উদ্দিন</td>
                         <td class="py-3 px-4">+৮৮০-১৫১২-৩৪৫৬৭৮</td>
                         <td class="py-3 px-4">examination@dhamraigovtcollege.edu.bd</td>
                     </tr>
-                    <tr>
+                    <tr class="hover:bg-gray-50">
                         <td class="py-3 px-4">আইটি সেল</td>
                         <td class="py-3 px-4">মাহমুদুল হাসান</td>
                         <td class="py-3 px-4">+৮৮০-১৪১২-৩৪৫৬৭৮</td>
@@ -168,7 +178,7 @@
 </section>
 
 <!-- FAQ Section -->
-<section class="py-12 bg-gray-50">
+<section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
         <div class="text-center mb-10">
             <h2 class="text-3xl font-bold text-gray-800 mb-2">প্রায়শই জিজ্ঞাসিত প্রশ্ন</h2>
@@ -177,29 +187,32 @@
         
         <div class="max-w-3xl mx-auto space-y-4">
             {% for faq in faqs %}
-            <div class="border border-gray-200 rounded overflow-hidden">
-                <button class="faq-question w-full px-6 py-4 text-left bg-white flex justify-between items-center">
-                    <span class="font-medium text-gray-800">{{faq.question}}</span>
+            <div class="border border-gray-200 rounded overflow-hidden bg-white">
+                <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center transition-colors duration-200">
+                    <span class="font-medium text-gray-800">{{ faq.question }}</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down text-primary transition-transform duration-300"><polyline points="6 9 12 15 18 9"/></svg>
                 </button>
-                <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300">
-                    <p class="p-6 text-gray-600">{{faq.ans}}</p>
+                <div class="faq-answer overflow-hidden max-h-0 transition-all bg-white duration-300">
+                    <p class="p-6 text-gray-600">{{ faq.ans }}</p>
                 </div>
-            </div>            
+            </div>
+            {% empty %}
+            <p class="text-gray-600 text-center">কোনো প্রশ্ন পাওয়া যায়নি।</p>
             {% endfor %}
         </div>
     </div>
 </section>
+
 <script>
-    // Faq Accordion
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    faqQuestions.forEach(question => {
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(question => {
         question.addEventListener('click', () => {
             const answer = question.nextElementSibling;
+            const icon = question.querySelector('svg');
             answer.classList.toggle('max-h-0');
             answer.classList.toggle('max-h-screen');
-            question.querySelector('i').classList.toggle('rotate-180');
+            icon.classList.toggle('rotate-180');
         });
     });
 </script>
-{% endblock content %}
+{% endblock %}
