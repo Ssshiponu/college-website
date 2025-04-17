@@ -1,4 +1,5 @@
 from django.db import models
+import os
 
 
 # Create your models here.
@@ -76,12 +77,19 @@ class Faculty(models.Model):
                 # Log the error or handle it as needed
                 print(f"Error processing image: {e}")
 
+    def delete(self, *args, **kwargs):
+        if self.photo:
+            os.remove(self.photo.path)
+            os.remove(self.photo.path.replace("faculty/", "faculty/96_faculty/"))
+        super().delete(*args, **kwargs)
+
     # get 96 px height image url
     @property
     def photo_96(self):
-        if self.photo:
+        try:
             return self.photo.url.replace("faculty/", "faculty/96_faculty/")
-        return None
+        except:
+            return None
 
     def __str__(self):
         return f"{self.name}"
@@ -114,6 +122,11 @@ class Notice(models.Model):
         if self.slug == "":
             self.slug = get_random_string(length=16)
         super().save(*args, **kwargs)
+
+    def remove(self, *args, **kwargs):
+        if self.document:
+            self.document.delete()
+        super().remove(*args, **kwargs)
 
     class Meta:
         ordering = ['-publish_date']
@@ -155,6 +168,11 @@ class Event(models.Model):
         if self.slug == "":
             self.slug = get_random_string(length=16)
         super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        if self.image:
+            self.image.delete()
+        super().delete(*args, **kwargs)
     
     def __str__(self):
         return self.title
@@ -176,6 +194,11 @@ class Gallery(models.Model):
     class Meta:
         verbose_name_plural = "Gallery"
         ordering = ['-upload_date']
+
+    def remove(self, *args, **kwargs):
+        if self.image:
+            self.image.delete()
+        super().remove(*args, **kwargs)
     
     def __str__(self):
         return self.title

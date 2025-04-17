@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}ধাসক - বিভাগসমূহ{% endblock title %}
+{% block title %}ধাসক - বিভাগসমূহ{% endblock %}
 
 {% block content %}
 <!-- Page Title -->
@@ -17,7 +17,7 @@
 </div>
 
 <!-- Departments Section -->
-<section class="py-10 bg-white">
+<section class="py-16 bg-white">
     <div class="container mx-auto px-4">
         <div class="flex flex-col lg:flex-row gap-8">
             <!-- Sidebar -->
@@ -25,27 +25,23 @@
                 <div class="bg-gray-50 border border-gray-200 rounded p-6 sticky top-24">
                     <h3 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-200">বিভাগসমূহ</h3>
                     <div class="mb-6">
-                        <ul class="space-y-2">
-                            <li>
-                                    {% for department in departments %}
-                                    <a href="{% url 'core:department_detail' department.slug %}" class="flex items-center text-gray-700">
-                                        {{ department.name }}
-                                    </a>
-                                    {% endfor %}
-                                
-                            </li>
-                        </ul>
+                        <select class="w-full border border-gray-200 rounded p-2 bg-white focus:outline-none focus:ring-2 focus:ring-primary" onchange="location = this.value;">
+                            <option value="" disabled selected>বিভাগ নির্বাচন করুন</option>
+                            {% for department in departments %}
+                            <option value="{% url 'core:department_detail' department.slug %}" {% if department.is_active %}class="font-medium text-primary"{% endif %}>
+                                {{ department.name }}
+                            </option>
+                            {% endfor %}
+                        </select>
                     </div>
-                    <div class="bg-primary/5 p-4 rounded sm:hidden md:block">
-                        <h4 class="font-semibold mb-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info text-primary inline mr-2">
-                                <circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>
-                            </svg>
+                    <div class="bg-primary/5 p-4 rounded hidden md:block">
+                        <h4 class="font-semibold mb-2 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info text-primary mr-2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
                             যোগাযোগ
                         </h4>
-                        <ul class="flex flex-col space-y-2 text-sm">
-                            <li class="flex">হেল্পলাইন: +৮৮০-২-১২৩৪৫৬৭</li>
-                            <li class="flex">ইমেইল: info@dgc.edu.bd</li>
+                        <ul class="flex flex-col space-y-2 text-sm text-gray-600">
+                            <li>হেল্পলাইন: +৮৮০-২-১২৩৪৫৬৭</li>
+                            <li>ইমেইল: info@dgc.edu.bd</li>
                         </ul>
                     </div>
                 </div>
@@ -57,37 +53,29 @@
                     <h2 class="text-2xl font-semibold mb-6 pb-2 border-b border-gray-200">বিভাগসমূহ</h2>
                     
                     {% if departments %}
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {% for department in departments %}
-                                <div class="bg-white border border-gray-200 rounded-lg p-6">
-                                    <div class="flex justify-between items-start mb-4">
-                                        <span class="text-gray-700 border border-gray-200 px-3 py-1 rounded-full text-sm font-medium">{{ department.code }}</span>
-                                        <span class="text-gray-500">Est. - {{ department.established|date:"Y" }}</span>
-                                    </div>
-                                    <h3 class="text-xl font-semibold mb-3">{{ department.name }}</h3>
-                                    <p class="mb-4 text-gray-700">{{ department.description|truncatewords:20 }}</p>
-                                    {% if department.department_head %}
-                                        <p class="text-gray-600 mb-4">বিভাগীয় প্রধান: {{ department.department_head }}</p>
-                                    {% else %}
-                                        <p class="text-gray-600 mb-4">বিভাগীয় প্রধান: নির্ধারিত হয়নি</p>
-                                    {% endif %}
-                                    <a href="{% url 'core:department_detail' department.slug %}" class="text-primary font-medium hover:text-primary-dark">
-                                        বিস্তারিত দেখুন
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-1 inline">
-                                            <line x1="5" x2="19" y1="12" y2="12"/><polyline points="12 5 19 12 12 19"/>
-                                        </svg>
-                                    </a>
-                                </div>
-                            {% endfor %}
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {% for department in departments %}
+                        <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow duration-200">
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-gray-700 border border-gray-200 px-2 py-0.5 rounded-full text-xs font-medium">{{ department.code }}</span>
+                                <span class="text-gray-500 text-xs">Est. {{ department.established|date:"Y" }}</span>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">{{ department.name }}</h3>
+                            <a href="{% url 'core:department_detail' department.slug %}" class="text-primary text-sm font-medium flex items-center group hover:text-primary-dark transition-colors duration-200">
+                                বিস্তারিত দেখুন
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-1 group-hover:translate-x-1 transition-transform duration-200"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </a>
                         </div>
+                        {% endfor %}
+                    </div>
                     {% else %}
-                        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-center">
-                            <p class="text-gray-700">কোনো বিভাগ পাওয়া যায়নি।</p>
-                        </div>
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-center">
+                        <p class="text-gray-700">কোনো বিভাগ পাওয়া যায়নি।</p>
+                    </div>
                     {% endif %}
                 </div>
             </div>
         </div>
     </div>
 </section>
-{% endblock content %}
+{% endblock %}

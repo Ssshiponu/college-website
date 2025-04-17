@@ -24,7 +24,7 @@
             <div class="lg:w-1/4">
                 <div class="bg-gray-50 border border-gray-200 rounded p-6 sticky top-24">
                     <h3 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-200">বিভাগের তথ্য</h3>
-                    <ul class="space-y-2">
+                    <ul class="space-y-2 text-sm">
                         <li class="flex items-center text-gray-700">
                             <strong class="mr-2">কোড:</strong> {{ department.code }}
                         </li>
@@ -55,7 +55,13 @@
                             
                                 <div class="w-full">
                                     <a href="{% url 'core:faculty_detail' item.slug %}" class="h-full flex items-center cursor-pointer overflow-hidden border border-gray-200 rounded-lg hover:border-primary transition duration-300 ease-in-out">
-                                    <img alt="team" class="h-24 w-24 bg-gray-100 object-cover object-center flex-shrink-0 mr-2" src="{{item.photo.url}}">
+                                        {% if item.photo_96 %}
+                                        <img alt="team" class="h-24 w-24 bg-gray-100 object-cover object-center flex-shrink-0 mr-2" src="{{item.photo_96}}" loading="lazy">
+                                        {% else %}
+                                        <div class="h-24 w-24 bg-gray-100 flex-shrink-0 mr-2 flex items-center justify-center">
+                                            <span class="text-gray-500 text-sm">No image found</span>
+                                        </div>
+                                        {% endif %}
                                     <div class="flex-grow p-3"> 
                                         <h2 class="text-gray-900 title-font font-medium mb-2">{{item.name}}</h2>
                                         <p class="text-gray-500">{{item.designation}}</p>
