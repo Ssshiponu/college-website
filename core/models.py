@@ -61,19 +61,20 @@ class Faculty(models.Model):
 
 class Notice(models.Model):
     CATEGORY_CHOICES = [
-        ('routin', 'রুটিন'),
-        ('academic', 'একাডেমিক'),
-        ('admission', 'ভর্তি'),
-        ('examination', 'পরীক্ষা'),
-        ('event', 'অনুষ্ঠান'),
-        ('other', 'অন্যান্য'),
+        ('রুটিন', 'রুটিন'),
+        ('একাডেমিক', 'একাডেমিক'),
+        ('ভর্তি', 'ভর্তি'),
+        ('পরীক্ষা', 'পরীক্ষা'),
+        ('অনুষ্ঠান', 'অনুষ্ঠান'),
+        ('অন্যান্য', 'অন্যান্য'),
     ]
 
     title = models.CharField(max_length=200)
     description = models.TextField(null=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
     publish_date = models.DateTimeField(default=timezone.now)
-    document = models.FileField(upload_to='notices/', null=True, blank=True)
+    document = CloudinaryField('document', null=True, blank=True)
+    image = CloudinaryField('image', null=True, blank=True)
     is_important = models.BooleanField(default=False)
     slug = models.SlugField(unique=True)
 
@@ -87,11 +88,6 @@ class Notice(models.Model):
         if self.slug == "":
             self.slug = get_random_string(length=16)
         super().save(*args, **kwargs)
-
-    def remove(self, *args, **kwargs):
-        if self.document:
-            self.document.delete()
-        super().remove(*args, **kwargs)
 
     class Meta:
         ordering = ['-publish_date']
@@ -113,6 +109,11 @@ class Program(models.Model):
     duration = models.CharField(max_length=50)
     slug = models.SlugField(unique=True)
 
+    def save(self, *args, **kwargs):
+        if self.slug == "":
+            self.slug = get_random_string(length=16)
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return f"{self.name} ({self.get_level_display()})"
 
@@ -122,7 +123,7 @@ class Event(models.Model):
     date = models.DateField()
     time = models.TimeField(null=True, blank=True)
     location = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='events/', null=True, blank=True)
+    image = CloudinaryField('image', null=True, blank=True)
     is_featured = models.BooleanField(default=False)
     slug = models.SlugField(unique=True, blank=True)
     
@@ -133,25 +134,20 @@ class Event(models.Model):
         if self.slug == "":
             self.slug = get_random_string(length=16)
         super().save(*args, **kwargs)
-
-    def delete(self, *args, **kwargs):
-        if self.image:
-            self.image.delete()
-        super().delete(*args, **kwargs)
     
     def __str__(self):
         return self.title
 
 class Gallery(models.Model):
     CATEGORY_CHOICES = [
-        ('campus', 'Campus'),
-        ('event', 'Event'),
-        ('student', 'Student Activities'),
-        ('other', 'Other'),
+        ('campus', 'ক্যাম্পাস'),
+        ('event', 'ইভেন্ট'),
+        ('students activity', 'ছাত্র কার্যক্রম'),
+        ('other', 'অন্যান্য'),
     ]
 
     title = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='gallery/')
+    image = CloudinaryField('image', null=True, blank=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
     description = models.TextField(blank=True, null=True)
     upload_date = models.DateTimeField(auto_now_add=True)
@@ -160,11 +156,6 @@ class Gallery(models.Model):
         verbose_name_plural = "Gallery"
         ordering = ['-upload_date']
 
-    def remove(self, *args, **kwargs):
-        if self.image:
-            self.image.delete()
-        super().remove(*args, **kwargs)
-    
     def __str__(self):
         return self.title
 
