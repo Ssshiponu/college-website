@@ -129,7 +129,10 @@ class EventListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['featured_event'] = Event.objects.filter(is_featured=True).order_by('-time').first()
-        context['events'] = Event.objects.all().exclude(id=context['featured_event'].id)
+        if context['featured_event']:
+            context['events'] = Event.objects.all().exclude(id=context['featured_event'].id)
+        else:
+            context['events'] = Event.objects.all()
         return context
 
 class EventDetailView(DetailView):
