@@ -90,7 +90,10 @@ class NoticeListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['featured_notice'] = Notice.objects.filter(is_important=True).order_by('-publish_date').first()
-        context['notices'] = Notice.objects.exclude(id=context['featured_notice'].id)
+        if context['featured_notice']:
+            context['notices'] = Notice.objects.exclude(id=context['featured_notice'].id)
+        else:
+            context['notices'] = Notice.objects.all()
         context['categories'] = Notice.CATEGORY_CHOICES
         return context
 
@@ -98,6 +101,14 @@ class NoticeDetailView(DetailView):
     model = Notice
     template_name = 'notice_detail.html'
     context_object_name = 'notice'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if context['featured_notice']:
+            context['notices'] = Notice.objects.exclude(id=context['featured_notice'].id)
+        else:
+            context['notices'] = Notice.objects.all()
+        return context
 
 class ProgramListView(ListView):
     model = Program
