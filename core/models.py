@@ -76,13 +76,7 @@ class Notice(models.Model):
     document = CloudinaryField('document', null=True, blank=True)
     image = CloudinaryField('image', null=True, blank=True)
     is_important = models.BooleanField(default=False)
-    slug = models.SlugField(unique=True)
-
-    @property
-    def is_image(self):
-        if self.document.url.endswith("jpg"):
-            return True
-        return False
+    slug = models.SlugField(unique=True, blank=True)
     
     def save(self, *args, **kwargs):
         if self.slug == "":
