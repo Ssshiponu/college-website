@@ -28,13 +28,13 @@ class Department(models.Model):
 
 class Faculty(models.Model):
     DESIGNATION_CHOICES = [
-        ('Principal', 'Principal'),
-        ('Vice Principal', 'Vice Principal'),
-        ('Professor', 'Professor'),
-        ('Associate Professor', 'Associate Professor'),
-        ('Assistant Professor', 'Assistant Professor'),
-        ('Lecturer', 'Lecturer'),
-        ('Staff', 'Staff'),
+        ('অধ্যক্ষ', 'অধ্যক্ষ'),
+        ('সহযোগী অধ্যক্ষ', 'সহযোগী অধ্যক্ষ'),
+        ('অধ্যাপক', 'অধ্যাপক'),
+        ('যুগ্ম অধ্যাপক', 'যুগ্ম অধ্যাপক'),
+        ('সহযোগী অধ্যাপক', 'সহযোগী অধ্যাপক'),
+        ('প্রভাষক', 'প্রভাষক'),
+        ('কর্মচারী', 'কর্মচারী'),
     ]
 
     name = models.CharField(max_length=100)
