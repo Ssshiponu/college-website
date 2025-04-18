@@ -80,12 +80,12 @@
             <h2 class="text-3xl font-bold text-gray-800 mb-2">ক্যাম্পাস গ্যালারি</h2>
             <p class="text-gray-600">আমাদের ক্যাম্পাসের সৌন্দর্য ও কার্যক্রমের ঝলক</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {% for image in gallery_images %}
-            <div class="bg-white border border-gray-200 rounded overflow-hidden hover:shadow-lg transition-shadow duration-200">
-                <img class="w-full h-64 object-cover" src="{{ image.url }}" alt="ক্যাম্পাস ছবি">
-                <div class="p-4">
-                    <p class="text-gray-600">{{ image.caption }}</p>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4 p-4">
+            {% for image in campus_images %}
+            <div class="aspect-[4/3] relative group">
+                <img src="{{ image.image.url }}" alt="Description of image 1" class="w-full h-full object-cover" loading="lazy">
+                <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white">
+                    {{ image.title }}
                 </div>
             </div>
             {% empty %}

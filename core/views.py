@@ -150,7 +150,14 @@ class ContactView(TemplateView):
         return context
 
 class CampusView(TemplateView):
+    model = Gallery
+    context_object_name = 'campus_images'
     template_name = 'campus.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['campus_images'] = Gallery.objects.filter(category='campus')[:4]
+        return context
 
 class AdmissionView(TemplateView):
     template_name = 'admission.html'
