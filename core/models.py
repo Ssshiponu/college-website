@@ -1,13 +1,10 @@
 from django.db import models
 import os
 
-
-# Create your models here.
-
 from django.db import models
 from django.utils import timezone
-from django.utils.text import slugify
 from django.utils.crypto import get_random_string
+from cloudinary.models import CloudinaryField
 
 class Department(models.Model):
     name = models.CharField(max_length=100)
@@ -42,7 +39,7 @@ class Faculty(models.Model):
     department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, blank=True)
     education = models.TextField(null=True)
     bio = models.TextField(null=True)
-    photo = models.ImageField(upload_to='faculty/', null=True, blank=True)
+    photo = CloudinaryField('image', null=True, blank=True)
     email = models.EmailField(blank=True, null=True)
     phone = models.CharField(max_length=20, blank=True, null=True)
     join_date = models.DateField()
@@ -52,44 +49,12 @@ class Faculty(models.Model):
     
     class Meta:
         verbose_name_plural = "Faculty Members"
+        ordering = ['designation', 'name']
     
     def save(self, *args, **kwargs):
         if self.slug == "":
             self.slug = get_random_string(length=16)
         super().save(*args, **kwargs)
-
-        # save a 96px width copy of the image with width auto as per aspect ratio
-        if self.photo:
-            try:
-                from PIL import Image
-                from io import BytesIO
-                from django.core.files.base import ContentFile
-
-                img = Image.open(self.photo)
-                aspect_ratio =img.height / img.width 
-                new_height = int(96 * aspect_ratio)
-                img = img.resize((96, new_height), Image.Resampling.LANCZOS)
-                img_io = BytesIO()
-                img.save(img_io, format='JPEG')
-                img_file = ContentFile(img_io.getvalue(), name=self.photo.name)
-                self.photo.save(f"96_{self.photo.name}", img_file, save=False)
-            except Exception as e:
-                # Log the error or handle it as needed
-                print(f"Error processing image: {e}")
-
-    def delete(self, *args, **kwargs):
-        if self.photo:
-            os.remove(self.photo.path)
-            os.remove(self.photo.path.replace("faculty/", "faculty/96_faculty/"))
-        super().delete(*args, **kwargs)
-
-    # get 96 px height image url
-    @property
-    def photo_96(self):
-        try:
-            return self.photo.url.replace("faculty/", "faculty/96_faculty/")
-        except:
-            return None
 
     def __str__(self):
         return f"{self.name}"

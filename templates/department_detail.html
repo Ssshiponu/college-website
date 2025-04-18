@@ -55,8 +55,8 @@
                             
                                 <div class="w-full">
                                     <a href="{% url 'core:faculty_detail' item.slug %}" class="h-full flex items-center cursor-pointer overflow-hidden border border-gray-200 rounded-lg hover:border-primary transition duration-300 ease-in-out">
-                                        {% if item.photo_96 %}
-                                        <img alt="team" class="h-24 w-24 bg-gray-100 object-cover object-center flex-shrink-0 mr-2" src="{{item.photo_96}}" loading="lazy">
+                                        {% if item.photo %}
+                                        <img alt="{{ item.name }}" class="h-24 w-24 bg-gray-100 object-cover object-center flex-shrink-0 mr-2" src="{{item.photo.url}}" loading="lazy">
                                         {% else %}
                                         <div class="h-24 w-24 bg-gray-100 flex-shrink-0 mr-2 flex items-center justify-center">
                                             <span class="text-gray-500 text-sm">No image found</span>
