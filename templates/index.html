@@ -120,16 +120,16 @@
                 <h3 class="text-lg font-medium mb-2">সাম্প্রতিক ইভেন্ট</h3>
                 <div class="space-y-6 divide-y divide-gray-200 mb-4">
                     {% if events %}
-                    {% for event in events %}
-                    <div class="pt-6">
-                        <div class="mb-3">
-                            <span class="text-gray-600 text-sm font-thin">{{ event.date|date:"d M Y" }} |  {{ event.time }} | <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-1"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> {{ event.location }}</span>
+                        {% for event in events %}
+                        <div class="pt-6">
+                            <div class="mb-3">
+                                <span class="text-gray-600 text-sm font-thin">{{ event.date|date:"d M Y" }} |  {{ event.time }} | <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-1"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> {{ event.location }}</span>
+                            </div>
+                            <a href="{% url 'core:event_detail' event.slug %}" class="text-lg font-semibold text-gray-900 hover:underline">{{ event.title }}</a>
                         </div>
-                        <a href="{% url 'core:event_detail' event.slug %}" class="text-lg font-semibold text-gray-900 hover:underline">{{ event.title }}</a>
-                    </div>
-                    {% endfor %}
+                        {% endfor %}
                     {% else %}
-                    <p class="text-gray-600 p-4 text-sm font-thin text-gray-600">কোনো ইভেন্ট পাওয়া যায়নি</p>
+                        <p class="text-gray-600 p-4 text-sm font-thin text-gray-600">কোনো ইভেন্ট পাওয়া যায়নি</p>
                     {% endif %}
                 </div>
                 <a href="{% url 'core:events' %}" class="text-primary flex items-center group hover:text-primary-dark transition-colors duration-200">

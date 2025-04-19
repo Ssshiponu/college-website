@@ -9,7 +9,7 @@ class HomeView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['notices'] = Notice.objects.all()[:3]
         context['events'] = Event.objects.filter(is_featured=True)[:3]
-        context['principal'] = Faculty.objects.filter(designation='অধ্যক্ষ').first()
+        context['principal'] = Faculty.objects.filter(designation='principal').first()
         return context
 
 class HistoryView(TemplateView):
@@ -17,7 +17,7 @@ class HistoryView(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['principal'] = Faculty.objects.filter(designation='অধ্যক্ষ').first()
+        context['gallery'] = Gallery.objects.filter( category='history')[:3]
         return context
 
 class FacultyListView(ListView):

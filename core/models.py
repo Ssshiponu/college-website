@@ -1,7 +1,4 @@
 from django.db import models
-import os
-
-from django.db import models
 from django.utils import timezone
 from django.utils.crypto import get_random_string
 from cloudinary.models import CloudinaryField
@@ -11,7 +8,7 @@ class Department(models.Model):
     code = models.CharField(max_length=10)
     description = models.TextField(null=True)
     department_head = models.ForeignKey('Faculty', on_delete=models.SET_NULL, null=True, blank=True, related_name='head_of_department')
-    established = models.DateField()
+    established = models.DateField(null=True, blank=True)
     slug = models.SlugField(unique=True, blank=True)
     
     def save(self, *args, **kwargs):
@@ -45,9 +42,8 @@ class Faculty(models.Model):
     join_date = models.DateField()
     slug = models.SlugField(unique=True, blank=True)
 
-    
     class Meta:
-        verbose_name_plural = "Faculty Members"
+        verbose_name_plural = "শিক্ষক-শিক্ষিকা"
         ordering = ['designation', 'name']
     
     def save(self, *args, **kwargs):
@@ -83,6 +79,7 @@ class Notice(models.Model):
         super().save(*args, **kwargs)
 
     class Meta:
+        verbose_name_plural = "নোটিশ"
         ordering = ['-publish_date']
 
     def __str__(self):
@@ -134,17 +131,17 @@ class Event(models.Model):
 class Gallery(models.Model):
     CATEGORY_CHOICES = [
         ('campus', 'ক্যাম্পাস'),
+        ('history', 'ইতিহাস'),
         ('event', 'ইভেন্ট'),
         ('students activity', 'ছাত্র কার্যক্রম'),
         ('other', 'অন্যান্য'),
     ]
 
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, null=True, blank=True)
     image = CloudinaryField('image', null=True, blank=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
-    description = models.TextField(blank=True, null=True)
     upload_date = models.DateTimeField(auto_now_add=True)
-    
+
     class Meta:
         verbose_name_plural = "Gallery"
         ordering = ['-upload_date']
@@ -156,7 +153,6 @@ class Faq(models.Model):
     FAQ_PAGES = [
         ('admission', 'ভর্তি'),
         ('contact', 'যোগাযোগ'),
-        ('notice', 'নোটিশ'),
     ]
     question = models.CharField(max_length=200)
     ans = models.TextField()
