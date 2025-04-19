@@ -77,24 +77,37 @@ class NoticeListView(ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        queryset = super().get_queryset()
-        category = self.request.GET.get('category')
-        search = self.request.GET.get('search')
-        
-        if category:
-            queryset = queryset.filter(category=category)
-        if search:
-            queryset = queryset.filter(Q(title__icontains=search) | Q(description__icontains=search))
-        return queryset
+        try:
+            queryset = super().get_queryset()
+            category = self.request.GET.get('category')
+            search = self.request.GET.get('search')
+            
+            if category:
+                queryset = queryset.filter(category=category)
+                print(category)
+            if search:
+                queryset = queryset.filter(Q(title__icontains=search) | Q(description__icontains=search))
+            return queryset
+        except Exception as e:
+            # Log the error and return an empty queryset
+            print(f"Error in get_queryset: {e}")
+            return Notice.objects.none()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['featured_notice'] = Notice.objects.filter(is_important=True).order_by('-publish_date').first()
-        if context['featured_notice']:
-            context['notices'] = Notice.objects.exclude(id=context['featured_notice'].id)
-        else:
-            context['notices'] = Notice.objects.all()
-        context['categories'] = Notice.CATEGORY_CHOICES
+        try:
+            context['featured_notice'] = Notice.objects.filter(is_important=True).order_by('-publish_date').first()
+            if context['featured_notice'] is not None:
+                context['notices'] = self.get_queryset().exclude(id=context['featured_notice'].id)
+            else:
+                context['notices'] = self.get_queryset()
+            context['categories'] = Notice.CATEGORY_CHOICES
+        except Exception as e:
+            # Log the error and provide fallback data
+            print(f"Error in get_context_data: {e}")
+            context['featured_notice'] = None
+            context['notices'] = Notice.objects.none()
+            context['categories'] = []
         return context
 
 class NoticeDetailView(DetailView):
@@ -102,13 +115,6 @@ class NoticeDetailView(DetailView):
     template_name = 'notice_detail.html'
     context_object_name = 'notice'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        if context['featured_notice']:
-            context['notices'] = Notice.objects.exclude(id=context['featured_notice'].id)
-        else:
-            context['notices'] = Notice.objects.all()
-        return context
 
 class ProgramListView(ListView):
     model = Program
@@ -160,7 +166,7 @@ class ContactView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['faqs'] = Faq.objects.filter(page='Contact')
+        context['faqs'] = Faq.objects.filter(page='contact')
         return context
 
 class CampusView(TemplateView):
@@ -174,9 +180,11 @@ class CampusView(TemplateView):
         return context
 
 class AdmissionView(TemplateView):
+    model = Faq
+    context_object_name = 'faqs'
     template_name = 'admission.html'
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['faqs'] = Faq.objects.filter(page='Admission')
+        context['faqs'] = Faq.objects.filter(page='admission')
         return context

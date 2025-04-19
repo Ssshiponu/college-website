@@ -84,12 +84,16 @@ WSGI_APPLICATION = 'dgc.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+# SQLite in development
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+# PostgreSQL in production (render.com)
 
 DATABASES = {
     'default': dj_database_url.config(
@@ -99,7 +103,15 @@ DATABASES = {
     )
 }
 
+# PostgreSQL in production (neon.tech)
 
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         # Replace this value with your local database's connection string.
+#         default='postgresql://neondb_owner:npg_mv6HoFBhGXi3@ep-still-smoke-a149pvg5-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require',
+#         conn_max_age=600
+#     )
+# }
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 

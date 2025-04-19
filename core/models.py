@@ -25,13 +25,13 @@ class Department(models.Model):
 
 class Faculty(models.Model):
     DESIGNATION_CHOICES = [
-        ('অধ্যক্ষ', 'অধ্যক্ষ'),
-        ('সহযোগী অধ্যক্ষ', 'সহযোগী অধ্যক্ষ'),
-        ('অধ্যাপক', 'অধ্যাপক'),
-        ('যুগ্ম অধ্যাপক', 'যুগ্ম অধ্যাপক'),
-        ('সহযোগী অধ্যাপক', 'সহযোগী অধ্যাপক'),
-        ('প্রভাষক', 'প্রভাষক'),
-        ('কর্মচারী', 'কর্মচারী'),
+        ('principal', 'অধ্যক্ষ'),
+        ('vice principal', 'সহযোগী অধ্যক্ষ'),
+        ('professor', 'অধ্যাপক'),
+        ('associate professor', 'যুগ্ম অধ্যাপক'),
+        ('assistant professor', 'সহযোগী অধ্যাপক'),
+        ('lecturer', 'প্রভাষক'),
+        ('staff', 'কর্মচারী'),
     ]
 
     name = models.CharField(max_length=100)
@@ -43,7 +43,6 @@ class Faculty(models.Model):
     email = models.EmailField(blank=True, null=True)
     phone = models.CharField(max_length=20, blank=True, null=True)
     join_date = models.DateField()
-    is_featured = models.BooleanField(default=False)
     slug = models.SlugField(unique=True, blank=True)
 
     
@@ -61,12 +60,12 @@ class Faculty(models.Model):
 
 class Notice(models.Model):
     CATEGORY_CHOICES = [
-        ('রুটিন', 'রুটিন'),
-        ('একাডেমিক', 'একাডেমিক'),
-        ('ভর্তি', 'ভর্তি'),
-        ('পরীক্ষা', 'পরীক্ষা'),
-        ('অনুষ্ঠান', 'অনুষ্ঠান'),
-        ('অন্যান্য', 'অন্যান্য'),
+        ('routine', 'রুটিন'),
+        ('academic', 'একাডেমিক'),
+        ('admission', 'ভর্তি'),
+        ('exam', 'পরীক্ষা'),
+        ('event', 'অনুষ্ঠান'),
+        ('other', 'অন্যান্য'),
     ]
 
     title = models.CharField(max_length=200)
@@ -155,13 +154,13 @@ class Gallery(models.Model):
 
 class Faq(models.Model):
     FAQ_PAGES = [
-        ('Admission', 'Admission'),
-        ('Contact', 'Contact'),
-        ('Notice', 'Notice'),
+        ('admission', 'ভর্তি'),
+        ('contact', 'যোগাযোগ'),
+        ('notice', 'নোটিশ'),
     ]
     question = models.CharField(max_length=200)
     ans = models.TextField()
-    page = models.CharField(choices=FAQ_PAGES)
+    page = models.CharField(choices=FAQ_PAGES, max_length=20)
 
     def __str__(self):
         return self.question

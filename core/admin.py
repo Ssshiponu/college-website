@@ -8,22 +8,22 @@ class DepartmentAdmin(admin.ModelAdmin):
 
 @admin.register(Faculty)
 class FacultyAdmin(admin.ModelAdmin):
-    list_display = ('name', 'designation', 'department', 'email', 'join_date')
-    list_filter = ('designation', 'department', 'is_featured')
+    list_display = ('name', 'designation', 'department', 'email', 'phone')
+    list_filter = ('designation', 'department')
     search_fields = ('name', 'email', 'bio')
 
 @admin.register(Notice)
 class NoticeAdmin(admin.ModelAdmin):
     list_display = ('title', 'category', 'publish_date', 'is_important')
-    list_filter = ('category', 'is_important', 'publish_date')
+    list_filter = ('category', 'publish_date')
     search_fields = ('title', 'content')
     date_hierarchy = 'publish_date'
 
-@admin.register(Program)
-class ProgramAdmin(admin.ModelAdmin):
-    list_display = ('name', 'level', 'department', 'duration')
-    list_filter = ('level', 'department')
-    search_fields = ('name', 'description')
+# @admin.register(Program)
+# class ProgramAdmin(admin.ModelAdmin):
+#     list_display = ('name', 'level', 'department', 'duration')
+#     list_filter = ('level', 'department')
+#     search_fields = ('name', 'description')
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
