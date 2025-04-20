@@ -49,5 +49,7 @@ urlpatterns = [
     
     # Contact URL
     path('contact/', views.ContactView.as_view(), name='contact'),
-    
+
 ] 
+
+handle404 = '404.html'

@@ -106,8 +106,8 @@
                 <div class="flex justify-center mt-8">
                     <nav class="inline-flex">
                         {% if page_obj.has_previous %}
-                        <a href="?page={{ page_obj.previous_page_number }}" class="px-3 py-1 border border-gray-300 bg-white text-gray-500 rounded-l">
-                            <i class="fas fa-chevron-left"></i>
+                        <a href="?page={{ page_obj.previous_page_number }}" class="px-1 py-1 border border-gray-300 bg-white text-gray-500 rounded-l">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left-icon lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
                         </a>
                         {% endif %}
                         {% for num in page_obj.paginator.page_range %}
@@ -118,8 +118,8 @@
                         {% endif %}
                         {% endfor %}
                         {% if page_obj.has_next %}
-                        <a href="?page={{ page_obj.next_page_number }}" class="px-3 py-1 border border-gray-300 bg-white text-gray-500 rounded-r">
-                            <i class="fas fa-chevron-right"></i>
+                        <a href="?page={{ page_obj.next_page_number }}" class="px-1 py-1 border border-gray-300 bg-white text-gray-500 rounded-r">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right-icon lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
                         </a>
                         {% endif %}
                     </nav>
