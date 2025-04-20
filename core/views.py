@@ -3,6 +3,7 @@ from django.db.models import Q
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 from django.contrib import messages
+from django.utils import timezone
 import logging
 from .models import Department, Faculty, Notice, Program, Event, Gallery, Faq
 
