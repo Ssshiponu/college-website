@@ -65,7 +65,7 @@ class Faculty(models.Model):
     slug = models.SlugField(unique=True, blank=True)
 
     class Meta:
-        verbose_name_plural = "শিক্ষক-শিক্ষিকা"
+        verbose_name_plural = "Teachers"
         ordering = ['designation', 'name']
         indexes = [models.Index(fields=['slug'])]
 
@@ -112,7 +112,7 @@ class Notice(models.Model):
     slug = models.SlugField(unique=True, blank=True)
 
     class Meta:
-        verbose_name_plural = "নোটিশ"
+        verbose_name_plural = "Notices"
         ordering = ['-publish_date']
         indexes = [
             models.Index(fields=['category']),
@@ -158,7 +158,7 @@ class Program(models.Model):
     slug = models.SlugField(unique=True, blank=True)
 
     class Meta:
-        verbose_name_plural = "প্রোগ্রাম"
+        verbose_name_plural = "Programs"
         indexes = [models.Index(fields=['slug'])]
 
     def clean(self):
@@ -193,7 +193,7 @@ class Event(models.Model):
     slug = models.SlugField(unique=True, blank=True)
 
     class Meta:
-        verbose_name_plural = "ইভেন্ট"
+        verbose_name_plural = "Events"
         ordering = ['-date']
         indexes = [
             models.Index(fields=['is_featured', '-date']),
@@ -241,7 +241,7 @@ class Gallery(models.Model):
     upload_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name_plural = "গ্যালারি"
+        verbose_name_plural = "Gallery"
         ordering = ['-upload_date']
         indexes = [models.Index(fields=['category'])]
 
@@ -269,7 +269,7 @@ class Faq(models.Model):
     page = models.CharField(choices=FAQ_PAGES, max_length=20)
 
     class Meta:
-        verbose_name_plural = "প্রশ্ন-উত্তর"
+        verbose_name_plural = "FAQs"
         ordering = ['question']
 
     def clean(self):
