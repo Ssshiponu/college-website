@@ -86,22 +86,22 @@ WSGI_APPLICATION = 'dgc.wsgi.application'
 
 # SQLite in development
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # PostgreSQL in production (render.com)
 
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         # Replace this value with your local database's connection string.
-#         default='postgresql://shipon:9Yxu6d7cx6njs3IRvBA5Y9hOyltpNLV2@dpg-d011vd3uibrs73euc2g0-a.singapore-postgres.render.com/dgcdb',
-#         conn_max_age=600
-#     )
-# }
+DATABASES = {
+    'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgresql://shipon:9Yxu6d7cx6njs3IRvBA5Y9hOyltpNLV2@dpg-d011vd3uibrs73euc2g0-a.singapore-postgres.render.com/dgcdb',
+        conn_max_age=600
+    )
+}
 
 # PostgreSQL in production (neon.tech)
 

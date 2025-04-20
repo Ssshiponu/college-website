@@ -44,7 +44,7 @@ class FacultyListView(ListView):
     model = Faculty
     template_name = 'faculty.html'
     context_object_name = 'faculty'
-    paginate_by = 10  # Added pagination
+    paginate_by = 18  # Added pagination
 
     def get_queryset(self):
         try:
@@ -101,7 +101,7 @@ class DepartmentListView(ListView):
     template_name = "departments.html"
     context_object_name = "departments"
     ordering = ["name"]
-    paginate_by = 10  # Added pagination
+    paginate_by = 16  # Added pagination
 
     def get_queryset(self):
         try:
@@ -140,7 +140,7 @@ class NoticeListView(ListView):
     model = Notice
     template_name = 'notice.html'
     context_object_name = 'notices'
-    paginate_by = 1
+    paginate_by = 12
 
     def get_queryset(self):
         try:
@@ -162,6 +162,10 @@ class NoticeListView(ListView):
                     Q(title__icontains=search) | Q(description__icontains=search)
                 )
 
+            featured_notice = Notice.objects.filter(is_important=True).order_by('-publish_date').first()
+            if featured_notice:
+                queryset = queryset.exclude(id=featured_notice.id)
+
             return queryset.order_by('-publish_date')
         except ValueError as e:
             logger.warning(f"Invalid query parameters in NoticeListView: {e}")
@@ -176,7 +180,6 @@ class NoticeListView(ListView):
         try:
             featured_notice = Notice.objects.filter(is_important=True).order_by('-publish_date').first()
             context['featured_notice'] = featured_notice
-            context['notices'] = self.object_list  # Use paginated queryset
             context['categories'] = Notice.CATEGORY_CHOICES
             context['get_params'] = self.request.GET.urlencode()
         except Exception as e:
@@ -258,7 +261,7 @@ class EventListView(ListView):
     model = Event
     template_name = 'events.html'
     context_object_name = 'events'
-    paginate_by = 3
+    paginate_by = 6
 
     def get_queryset(self):
         try:
@@ -269,6 +272,11 @@ class EventListView(ListView):
                     messages.warning(self.request, "Invalid event category selected.")
                     raise ValueError("Invalid category.")
                 queryset = queryset.filter(category=category)
+            
+            featured_notice = Event.objects.filter(is_featured=True, date__gte=timezone.now().date()).order_by('-date').first()
+            if featured_notice:
+                queryset = queryset.exclude(id=featured_notice.id)
+
             return queryset.order_by('-date')
         except ValueError as e:
             logger.warning(f"Invalid query parameters in EventListView: {e}")
@@ -283,7 +291,6 @@ class EventListView(ListView):
         try:
             featured_event = Event.objects.filter(is_featured=True).order_by('-date').first()
             context['featured_event'] = featured_event
-            context['events'] = self.object_list  # Use paginated queryset
             context['categories'] = Gallery.CATEGORY_CHOICES  # Assuming events use gallery categories
             context['get_params'] = self.request.GET.urlencode()
         except Exception as e:

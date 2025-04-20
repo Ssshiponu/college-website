@@ -20,17 +20,13 @@
             <!-- Sidebar -->
             <div class="lg:w-1/4">
                 <div class="bg-primary/5 border border-primary/20 rounded p-6 mb-8 sticky top-24">
-                    <h3 class="text-lg font-semibold mb-4">ক্যাটাগরি</h3>
+                    <h3 class="text-lg font-semibold mb-4">ইভেন্টস</h3>
                     <hr>
                     <ul class="space-y-2 mt-4">
-                        {% for category in categories %}
-                        <li>
-                            <a href="{% url 'core:events'%}?category={{ category }}" class="text-gray-700 hover:text-primary transition-colors duration-200">
-                                {{ category.name }} ({{ category.event_count }})
-                            </a>
-                        </li>
+                        {% for event in events %}
+                        <li class="text-gray-500"><a href="{{ event.slug }}" class="hover:underline">{{ event.title }}</a></li>
                         {% empty %}
-                        <li class="text-gray-500">কোন ক্যাটাগরি নেই</li>
+                        <li class="text-gray-500">কোন ইভেন্ট নেই</li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -89,6 +85,7 @@
                         <img class="w-full h-48 object-cover rounded mb-4" src="{{ event.image.url }}" alt="{{ event.title }}">
                         <div class="flex justify-between items-start mb-3">
                             <span class="text-gray-500 text-sm">{{ event.date|date:"d F, Y" }}</span>
+                            <span class="outdated-badge bg-primary text-white text-xs px-2 py-1 rounded"></span>
                         </div>
                         <h3 class="text-lg font-semibold mb-2">{{ event.title }}</h3>
                         <p class="text-gray-600 mb-3 line-clamp-2">{{ event.description|truncatewords:30 }}</p>
@@ -120,32 +117,24 @@
                     {% endfor %}
                 </div>
 
-                <!-- Pagination -->
-                {% if is_paginated %}
-                <div class="flex justify-center mt-8">
-                    <nav class="inline-flex">
-                        {% if page_obj.has_previous %}
-                        <a href="?page={{ page_obj.previous_page_number }}" class="px-3 py-1 border border-gray-300 bg-white text-gray-500 rounded-l hover:bg-gray-50 transition-colors duration-200">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-                        </a>
-                        {% endif %}
-                        {% for num in page_obj.paginator.page_range %}
-                        {% if page_obj.number == num %}
-                        <a href="?page={{ num }}" class="px-3 py-1 border-t border-b border-gray-300 bg-primary text-white">{{ num }}</a>
-                        {% else %}
-                        <a href="?page={{ num }}" class="px-3 py-1 border-t border-b border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors duration-200">{{ num }}</a>
-                        {% endif %}
-                        {% endfor %}
-                        {% if page_obj.has_next %}
-                        <a href="?page={{ page_obj.next_page_number }}" class="px-3 py-1 border border-gray-300 bg-white text-gray-500 rounded-r hover:bg-gray-50 transition-colors duration-200">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-                        </a>
-                        {% endif %}
-                    </nav>
-                </div>
-                {% endif %}
+                {% include "components/pagination.html" %}
+
             </div>
         </div>
     </div>
 </section>
+<script>
+    const today = new Date();
+    const outdatedBadge = document.querySelectorAll(".outdated-badge");
+    outdatedBadge.forEach(badge => {
+        const eventDateString = badge.previousElementSibling.innerHTML;
+        const eventDate = new Date(eventDateString);
+        if (eventDate < today) {
+            badge.innerText = "সম্পন্ন";
+        } else {
+            badge.innerText = "আসন্ন";
+        }
+    });
+</script>
 {% endblock %}
+

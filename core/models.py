@@ -215,6 +215,9 @@ class Event(models.Model):
             while Event.objects.filter(slug=self.slug).exclude(id=self.id).exists():
                 self.slug = f"{original_slug}-{counter}"
                 counter += 1
+        # Automatically set is_featured to False for past events
+        if self.date and self.date < timezone.now().date():
+            self.is_featured = False
         try:
             super().save(*args, **kwargs)
         except Exception as e:
