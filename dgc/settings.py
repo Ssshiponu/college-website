@@ -95,23 +95,23 @@ WSGI_APPLICATION = 'dgc.wsgi.application'
 
 # PostgreSQL in production (render.com)
 
-DATABASES = {
-    'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default='postgresql://shipon:9Yxu6d7cx6njs3IRvBA5Y9hOyltpNLV2@dpg-d011vd3uibrs73euc2g0-a.singapore-postgres.render.com/dgcdb',
-        conn_max_age=600
-    )
-}
+#DATABASES = {
+#    'default': dj_database_url.config(
+#        # Replace this value with your local database's connection string.
+#        default='postgresql://shipon:9Yxu6d7cx6njs3IRvBA5Y9hOyltpNLV2@dpg-d011vd3uibrs73euc2g0-a.singapore-postgres.render.com/dgcdb',
+#        conn_max_age=600
+#    )
+#}
 
 # PostgreSQL in production (neon.tech)
 
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         # Replace this value with your local database's connection string.
-#         default='postgresql://neondb_owner:npg_mv6HoFBhGXi3@ep-still-smoke-a149pvg5-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require',
-#         conn_max_age=600
-#     )
-# }
+DATABASES = {
+     'default': dj_database_url.config(
+         # Replace this value with your local database's connection string.
+         default='postgresql://neondb_owner:npg_mv6HoFBhGXi3@ep-still-smoke-a149pvg5-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require',
+         conn_max_age=600
+    )
+}
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
