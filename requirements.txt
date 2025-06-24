@@ -5,6 +5,7 @@ dj-database-url==2.3.0
 Django==5.2
 pillow==11.1.0
 psycopg2-binary==2.9.10
+python-dotenv==1.1.1
 six==1.17.0
 sqlparse==0.5.3
 typing_extensions==4.13.2

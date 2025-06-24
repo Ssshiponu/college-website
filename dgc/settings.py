@@ -14,26 +14,29 @@ from pathlib import Path
 import os
 import dj_database_url
 import cloudinary
-import cloudinary.uploader
-import cloudinary.api
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@u7w8r*scy_-#tu%0gslak*06uw2fqaunyo4j83uevme^%+c)w'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if bool(os.environ.get('DEBUG')) else False
 
-ALLOWED_HOSTS = ['dhamraigovtcollege.onrender.com', '0.0.0.0', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['dhamraigovtcollege.onrender.com',
+                'dhamraigovtcollege.pythonanywhere.com',
+                '0.0.0.0', '127.0.0.1', 'localhost']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://dhamraigovtcollege.onrender.com',
+    'https://dhamraigovtcollege.pythonanywhere.com'
 ]
     
 
@@ -93,22 +96,11 @@ WSGI_APPLICATION = 'dgc.wsgi.application'
 #     }
 # }
 
-# PostgreSQL in production (render.com)
-
-#DATABASES = {
-#    'default': dj_database_url.config(
-#        # Replace this value with your local database's connection string.
-#        default='postgresql://shipon:9Yxu6d7cx6njs3IRvBA5Y9hOyltpNLV2@dpg-d011vd3uibrs73euc2g0-a.singapore-postgres.render.com/dgcdb',
-#        conn_max_age=600
-#    )
-#}
-
 # PostgreSQL in production (neon.tech)
 
 DATABASES = {
      'default': dj_database_url.config(
-         # Replace this value with your local database's connection string.
-         default='postgresql://neondb_owner:npg_mv6HoFBhGXi3@ep-still-smoke-a149pvg5-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require',
+         default=os.environ.get('DATABASE_URL'),
          conn_max_age=600
     )
 }
@@ -166,7 +158,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Cloudinary settings
 cloudinary.config( 
-    cloud_name = "dujf1pswk", 
-    api_key = "743783945557328",
-    api_secret = "z_IZs6-qnVRvzU5E8ZYT5H2RiG4",
+    cloud_name = os.environ.get('CLOUDINARY_CLOUD_NAME'), 
+    api_key = os.environ.get('CLOUDINARY_API_KEY'),
+    api_secret = os.environ.get('CLOUDINARY_API_SECRET'),
 )
